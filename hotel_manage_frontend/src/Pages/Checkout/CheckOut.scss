@@ -1,0 +1,2304 @@
+// ============================================
+// GOOGLE FONTS IMPORT
+// ============================================
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;900&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+// ============================================
+// VARIABLES
+// ============================================
+$primary-color: #3f3f91;
+$primary-light: #6a6ac5;
+$primary-dark: #2d2f87;
+$success-color: #28a745;
+$danger-color: #dc3545;
+$warning-color: #e67e22;
+$bg-color: #dfeafb;
+$white: #ffffff;
+$shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+$border-radius: 14px;
+$border-radius-sm: 8px;
+
+// ============================================
+// MAIN CONTAINER
+// ============================================
+.ckout-main {
+    background: $bg-color !important;
+    font-family: 'Open Sans', sans-serif !important;
+    min-height: 100vh;
+    padding: 24px 28px 40px;
+}
+
+// ============================================
+// PAGE HEADER
+// ============================================
+.ckout-page-header {
+    max-width: 1300px;
+    margin: 0 auto 22px;
+    padding: 18px 24px;
+    background: $white;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-wrap: wrap;
+    gap: 14px;
+
+    .ckout-right-section {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .ckout-search-container {
+        position: relative;
+        width: 250px;
+
+        input {
+            width: 100%;
+            padding: 9px 14px 9px 38px;
+            border: 1.5px solid #e3e8f0;
+            border-radius: 50px;
+            background: #f5f7fa;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            color: #333;
+            transition: all 0.25s;
+
+            &:focus {
+                outline: none;
+                border-color: $primary-light;
+                background: $white;
+                box-shadow: 0 0 0 3px rgba(106, 106, 197, 0.12);
+            }
+
+            &::placeholder {
+                color: #aab0bc;
+            }
+        }
+
+        .ckout-search-icon {
+            position: absolute;
+            top: 50%;
+            left: 13px;
+            transform: translateY(-50%);
+            color: #aab0bc;
+            font-size: 14px;
+            pointer-events: none;
+        }
+    }
+
+    .ckout-filters-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        select,
+        input[type="date"] {
+            padding: 9px 14px;
+            border: 1.5px solid #e3e8f0;
+            border-radius: 50px;
+            background: #f5f7fa;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 13.5px;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.25s;
+
+            &:focus {
+                outline: none;
+                border-color: $primary-light;
+                background: $white;
+                box-shadow: 0 0 0 3px rgba(106, 106, 197, 0.12);
+            }
+        }
+    }
+
+    .ckout-action-buttons-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        button {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: $white;
+            padding: 9px 20px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.22s ease;
+            border-radius: 50px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.13);
+            letter-spacing: 0.2px;
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 14px rgba(0, 0, 0, 0.18);
+            }
+
+            &:active {
+                transform: translateY(0);
+            }
+        }
+
+        .ckout-add-btn {
+            background: linear-gradient(135deg, $warning-color, #f39c12);
+
+            &:hover {
+                background: linear-gradient(135deg, #d35400, $warning-color);
+                box-shadow: 0 5px 14px rgba(230, 126, 34, 0.35);
+            }
+        }
+    }
+}
+
+// ============================================
+// EXPORT ALL BUTTON
+// ============================================
+.ckout-export-all-btn {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: $white;
+
+    &:hover {
+        background: linear-gradient(135deg, #1e7e34, #1aa179);
+        box-shadow: 0 5px 14px rgba(40, 167, 69, 0.35);
+    }
+}
+
+// ============================================
+// BOOKING TYPE BADGES (Simple / 🌙 Night Stay)
+// ============================================
+.ckout-booking-type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+
+    &.ckout-pernight-badge {
+        background: #f0f0ff;
+        color: #6c5ce7;
+        border: 1px solid #d6d6ff;
+    }
+
+    &.ckout-simple-badge {
+        background: #eef1f8;
+        color: #556;
+        border: 1px solid #dde1ed;
+    }
+}
+
+// ============================================
+// PAYMENT TYPE BADGES
+// ============================================
+.ckout-payment-type-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    background: #eef1f8;
+    color: #556;
+
+    &.ckout-payment-type-cash {
+        background: #e8f5e9;
+        color: #2e7d32;
+    }
+
+    &.ckout-payment-type-upi {
+        background: #e3f2fd;
+        color: #1565c0;
+    }
+
+    &.ckout-payment-type-bank {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    &.ckout-payment-type-cheque {
+        background: #f3e5f5;
+        color: #6a1b9a;
+    }
+
+    &.ckout-payment-type-multiple {
+        background: #edf0fc;
+        color: $primary-color;
+    }
+}
+
+// ============================================
+// PAYMENT DETAILS - VIEW MODE
+// ============================================
+.ckout-payment-details-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ckout-payment-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13.5px;
+    color: #333;
+    padding: 4px 0;
+    border-bottom: 1px dashed #f0f2f8;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    .ckout-payment-method {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 600;
+        color: $primary-dark;
+        min-width: 60px;
+    }
+
+    .ckout-payment-amount {
+        font-weight: 700;
+        color: $success-color;
+    }
+
+    .ckout-payment-ref {
+        color: #888;
+        font-size: 12px;
+    }
+}
+
+.ckout-payment-total {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid #f0f2f8;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    color: #555;
+
+    strong {
+        color: $primary-color;
+    }
+}
+
+// ============================================
+// PAYMENT DETAILS - EDIT / CREATE FORM
+// ============================================
+.ckout-payment-details-edit {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ckout-payment-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.ckout-payment-method-select {
+    flex: 0 0 110px;
+}
+
+.ckout-payment-amount-input {
+    flex: 1;
+    min-width: 90px;
+}
+
+.ckout-payment-ref-input {
+    flex: 1;
+    min-width: 120px;
+}
+
+.ckout-remove-payment-btn {
+    background: #fdecea;
+    border: none;
+    color: $danger-color;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: all 0.2s;
+
+    &:hover:not(:disabled) {
+        background: $danger-color;
+        color: $white;
+    }
+
+    &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+}
+
+.ckout-payment-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.ckout-add-payment-btn {
+    background: transparent;
+    color: $primary-color;
+    border: 1.5px dashed $primary-light;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+    width: fit-content;
+
+    &:hover:not(:disabled) {
+        background: $primary-color;
+        color: $white;
+        border-style: solid;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+// ============================================
+// FORM CONTAINER
+// ============================================
+.ckout-form-container {
+    max-width: 1300px;
+    margin: 0 auto 22px;
+    padding: 28px 28px 24px;
+    background: $white;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+    border-top: 3px solid $primary-color;
+
+    &.ckout-premium {
+        border-top: 3px solid $primary-light;
+    }
+
+    h2 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 22px;
+        color: $primary-color;
+    }
+
+    .ckout-form-row {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 18px;
+
+        .ckout-form-field {
+            flex: 1;
+            position: relative;
+
+            &.ckout-form-field-full {
+                flex: 1 1 100%;
+            }
+        }
+    }
+
+    label {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        margin-bottom: 7px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        font-size: 13.5px;
+        color: #555;
+    }
+
+    input,
+    textarea,
+    select {
+        width: 100%;
+        padding: 9px 13px;
+        border: 1.5px solid #e3e8f0;
+        border-radius: $border-radius-sm;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        color: #333;
+        transition: border 0.25s, box-shadow 0.25s;
+        background: #fafbfc;
+        box-sizing: border-box;
+
+        &:focus {
+            border-color: $primary-light;
+            outline: none;
+            background: $white;
+            box-shadow: 0 0 0 3px rgba(106, 106, 197, 0.12);
+        }
+
+        &::placeholder {
+            color: #bfc5ce;
+        }
+    }
+
+    select {
+        cursor: pointer;
+    }
+
+    textarea {
+        min-height: 80px;
+        resize: vertical;
+    }
+
+    button[type='submit'] {
+        background: linear-gradient(135deg, $primary-color, $primary-light);
+        color: $white;
+        padding: 10px 28px;
+        border: none;
+        border-radius: 50px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.25s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 3px 10px rgba(63, 63, 145, 0.25);
+        margin-top: 6px;
+
+        &:hover {
+            background: linear-gradient(135deg, $primary-dark, $primary-color);
+            box-shadow: 0 5px 14px rgba(63, 63, 145, 0.35);
+            transform: translateY(-1px);
+        }
+
+        &:disabled {
+            background: #9e9ecc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+    }
+
+    .ckout-error {
+        color: $danger-color;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 12.5px;
+        margin-top: 5px;
+    }
+
+    .ckout-field-hint {
+        display: block;
+        margin-top: 6px;
+        color: #888;
+        font-size: 12px;
+        font-family: 'Open Sans', sans-serif;
+    }
+}
+
+// ============================================
+// EDIT-STYLE INPUTS (used in forms too, not just modals)
+// ============================================
+.ckout-edit-input,
+.ckout-edit-textarea {
+    width: 100%;
+    padding: 9px 13px;
+    border: 1.5px solid #e3e8f0;
+    border-radius: $border-radius-sm;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #333;
+    background: #fafbfc;
+    box-sizing: border-box;
+    transition: border 0.25s, box-shadow 0.25s;
+
+    &:focus {
+        border-color: $primary-light;
+        outline: none;
+        background: $white;
+        box-shadow: 0 0 0 3px rgba(106, 106, 197, 0.12);
+    }
+}
+
+select.ckout-edit-input {
+    cursor: pointer;
+}
+
+.ckout-edit-textarea {
+    min-height: 70px;
+    resize: vertical;
+}
+
+.ckout-read-only-input {
+    background: #f0f1f5 !important;
+    color: #888 !important;
+    cursor: not-allowed !important;
+
+    &:focus {
+        box-shadow: none !important;
+        border-color: #e3e8f0 !important;
+    }
+}
+
+// ============================================
+// CHECK-IN SEARCH SECTION (checkout form)
+// ============================================
+.ckout-booking-search-section {
+    margin-bottom: 18px;
+}
+
+.ckout-booking-search-wrap {
+    position: relative;
+}
+
+.ckout-booking-search-input {
+    padding-right: 38px !important;
+}
+
+.ckout-booking-search-icon {
+    position: absolute;
+    top: 50%;
+    right: 13px;
+    transform: translateY(-50%);
+    color: #aab0bc;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.ckout-searching-spinner {
+    position: absolute;
+    top: 50%;
+    right: 13px;
+    transform: translateY(-50%);
+    color: $primary-color;
+
+    .ckout-spin {
+        animation: ckout-spin 0.9s linear infinite;
+    }
+}
+
+@keyframes ckout-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.ckout-booking-dropdown {
+    max-height: 300px;
+}
+
+.ckout-booking-dropdown-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.ckout-booking-dropdown-number {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: $primary-dark;
+}
+
+.ckout-booking-dropdown-guest {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    color: #444;
+}
+
+.ckout-booking-dropdown-phone,
+.ckout-booking-dropdown-date {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    color: #888;
+}
+
+.ckout-selected-booking-info {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: #edf7ed;
+    border: 1px solid #c8e6c9;
+    border-radius: $border-radius-sm;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13.5px;
+    color: #256029;
+
+    .ckout-selected-booking-icon {
+        flex-shrink: 0;
+    }
+
+    .ckout-selected-booking-text {
+        flex: 1;
+
+        strong {
+            font-family: 'Roboto', sans-serif;
+        }
+    }
+
+    .ckout-selected-booking-remove {
+        background: transparent;
+        border: none;
+        color: #256029;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        padding: 0;
+        font-size: 14px;
+
+        &:hover {
+            color: $danger-color;
+        }
+    }
+}
+
+.ckout-booking-section-divider {
+    border: none;
+    border-top: 1px solid #eaeef6;
+    margin: 18px 0;
+}
+
+// ============================================
+// CUSTOMER / DROPDOWN LIST (shared pattern)
+// ============================================
+.ckout-dropdown-list {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    background: $white;
+    border: 1.5px solid #e3e8f0;
+    border-radius: $border-radius-sm;
+    box-shadow: 0 6px 20px rgba(30, 30, 60, 0.14);
+    max-height: 260px;
+    overflow-y: auto;
+    z-index: 50;
+}
+
+.ckout-dropdown-item {
+    padding: 10px 14px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border-bottom: 1px solid #f0f2f8;
+    transition: background 0.15s;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &:hover {
+        background: #f5f6fb;
+    }
+
+    &.ckout-dropdown-item-center {
+        justify-content: center;
+        align-items: center;
+        color: #888;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 13.5px;
+        cursor: default;
+
+        &:hover {
+            background: transparent;
+        }
+    }
+}
+
+// ============================================
+// EXTRA CHARGES / REQUIREMENTS (shared edit pattern)
+// ============================================
+.ckout-edit-requirements {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ckout-edit-req-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.ckout-edit-req-desc {
+    flex: 2;
+}
+
+.ckout-edit-req-price {
+    flex: 1;
+}
+
+.ckout-edit-req-remove {
+    background: #fdecea;
+    border: none;
+    color: $danger-color;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+
+    &:hover {
+        background: $danger-color;
+        color: $white;
+    }
+}
+
+.ckout-add-req-btn {
+    background: transparent;
+    color: $primary-color;
+    border: 1.5px dashed $primary-light;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+    width: fit-content;
+
+    &:hover {
+        background: $primary-color;
+        color: $white;
+        border-style: solid;
+    }
+}
+
+.ckout-add-proof-btn {
+    background: $primary-color;
+    color: $white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    transition: all 0.2s;
+
+    &:hover {
+        background: $primary-dark;
+    }
+}
+
+// ============================================
+// ID PROOFS (edit mode)
+// ============================================
+.ckout-edit-id-proofs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ckout-edit-proof-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.ckout-edit-proof-name {
+    flex: 1;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13.5px;
+    color: #444;
+    word-break: break-all;
+}
+
+.ckout-edit-proof-select {
+    flex: 1;
+}
+
+.ckout-edit-proof-add-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.ckout-edit-proof-file-input {
+    flex: 1;
+}
+
+// ============================================
+// DISCOUNT SECTION
+// ============================================
+.ckout-discount-row {
+    display: flex;
+    gap: 10px;
+}
+
+.ckout-discount-type-select {
+    flex: 1;
+}
+
+.ckout-discount-value-input {
+    flex: 1;
+}
+
+.ckout-discount-reason-input {
+    margin-top: 8px;
+}
+
+// ============================================
+// ROOMS & PRICING (create form + edit modal)
+// ============================================
+.ckout-rooms-pricing,
+.ckout-room-pricing-edit {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ckout-room-price-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 14px;
+    background: #fafbfc;
+    border: 1px solid #eee;
+    border-radius: $border-radius-sm;
+
+    &.ckout-room-removed-row {
+        background: #fdecea;
+        border-color: #f5c6cb;
+    }
+}
+
+.ckout-room-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 160px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13.5px;
+    color: #333;
+
+    strong {
+        font-family: 'Roboto', sans-serif;
+        color: $primary-dark;
+    }
+}
+
+.ckout-room-status-active {
+    background: #d4edda;
+    color: #155724;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 2px 9px;
+    border-radius: 50px;
+}
+
+.ckout-room-status-removed {
+    background: #f8d7da;
+    color: #721c24;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 2px 9px;
+    border-radius: 50px;
+}
+
+.ckout-room-price-input {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    .ckout-price-symbol,
+    .ckout-price-currency {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        color: $primary-color;
+        font-size: 14px;
+    }
+
+    .ckout-price-input {
+        width: 110px;
+    }
+}
+
+.ckout-room-duration {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    color: #888;
+    white-space: nowrap;
+}
+
+.ckout-room-removed-info,
+.ckout-removed-info {
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    color: #a94442;
+
+    small {
+        display: block;
+    }
+}
+
+// ============================================
+// FILE UPLOAD
+// ============================================
+.ckout-file-upload-area {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ckout-upload-btn {
+    background: #f5f7fc;
+    color: $primary-color;
+    border: 1.5px dashed $primary-light;
+    padding: 12px 20px;
+    border-radius: $border-radius-sm;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 13.5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+    width: 100%;
+
+    &:hover {
+        background: #ede8fa;
+    }
+}
+
+.ckout-file-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ckout-file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 14px;
+    background: #fafbfc;
+    border: 1px solid #eee;
+    border-radius: $border-radius-sm;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    color: #555;
+
+    button {
+        background: #f5f6fa;
+        border: none;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        min-width: 24px;
+        cursor: pointer;
+        color: #888;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+
+        &:hover {
+            background: #ffe8e8;
+            color: $danger-color;
+        }
+    }
+
+    &.ckout-file-item-labeled {
+        flex-wrap: wrap;
+    }
+
+    .ckout-file-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        flex: 1;
+        min-width: 140px;
+
+        span:first-child {
+            font-weight: 600;
+            color: #333;
+        }
+
+        span:last-child {
+            font-size: 11.5px;
+            color: #999;
+        }
+    }
+
+    .ckout-file-label {
+        select {
+            padding: 6px 10px;
+            font-size: 12.5px;
+            border-radius: 50px;
+            min-width: 140px;
+        }
+    }
+}
+
+// ============================================
+// PRICE BREAKDOWN (form preview + modal view/edit)
+// ============================================
+.ckout-price-breakdown-box {
+    background: #f5f5f5;
+    padding: 14px 16px;
+    border-radius: $border-radius-sm;
+    margin: 6px 0;
+
+    h4 {
+        margin: 0 0 10px;
+        color: $primary-color;
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+}
+
+.ckout-price-breakdown-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+
+    .ckout-price-val {
+        text-align: right;
+    }
+
+    .ckout-price-discount {
+        color: $danger-color;
+    }
+
+    .ckout-price-section-label {
+        grid-column: 1 / -1;
+        color: $primary-dark;
+        font-family: 'Roboto', sans-serif;
+        font-size: 13px;
+        margin-top: 6px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    .ckout-room-price-label {
+        padding-left: 8px;
+    }
+
+    .ckout-price-total-label {
+        font-weight: 700;
+        padding-left: 8px;
+    }
+
+    .ckout-price-total {
+        font-weight: 700;
+    }
+
+    .ckout-removed-label {
+        color: $danger-color;
+    }
+
+    .ckout-removed-text {
+        color: #a94442;
+    }
+
+    .ckout-removed-badge {
+        background: #f8d7da;
+        color: #721c24;
+        font-family: 'Roboto', sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 1px 8px;
+        border-radius: 50px;
+        display: inline-block;
+    }
+
+    .ckout-price-divider {
+        grid-column: 1 / -1;
+        border: 1px solid #ddd;
+        margin: 4px 0;
+
+        &.ckout-price-divider-thick {
+            border: 2px solid $primary-color;
+        }
+    }
+
+    .ckout-price-grand-label {
+        font-size: 16px;
+        font-weight: 700;
+        color: $primary-color;
+    }
+
+    .ckout-price-grand-value {
+        font-size: 16px;
+        font-weight: 700;
+        color: $primary-color;
+
+        &.ckout-balance-due {
+            color: $danger-color;
+        }
+
+        &.ckout-balance-clear {
+            color: $success-color;
+        }
+    }
+}
+
+// ============================================
+// DATA TABLE
+// ============================================
+.ckout-data-table {
+    max-width: 1300px;
+    margin: 0 auto 24px;
+    background: $white;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+    overflow: hidden;
+    overflow-x: auto;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+
+        thead {
+            background: #f7f8fc;
+            border-bottom: 1.5px solid #eaeef6;
+        }
+
+        th {
+            padding: 14px 20px;
+            text-align: left;
+            font-family: 'Roboto', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #6b6b9a;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 13px 20px;
+            text-align: left;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            color: #3a3a5c;
+            border-bottom: 1px solid #f0f2f8;
+            white-space: nowrap;
+        }
+
+        tr {
+            cursor: pointer;
+            transition: background-color 0.15s;
+
+            &:last-child td {
+                border-bottom: none;
+            }
+
+            &:hover td {
+                background-color: #f5f6fb;
+            }
+
+            &.ckout-selected td {
+                background-color: #edf0fc;
+                color: $primary-dark;
+            }
+        }
+    }
+}
+
+.ckout-empty-state {
+    text-align: center;
+    padding: 50px 20px;
+
+    p {
+        font-family: 'Open Sans', sans-serif;
+        color: #888;
+        font-size: 15px;
+    }
+}
+
+// ============================================
+// ACTION BUTTONS IN TABLE
+// ============================================
+.ckout-action-buttons {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+
+    .ckout-action-btn {
+        width: 30px;
+        height: 30px;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        transition: all 0.25s;
+        color: $white;
+
+        &:hover {
+            transform: scale(1.08);
+        }
+
+        &.ckout-print-btn-sm {
+            background: $primary-color;
+
+            &:hover {
+                background: $primary-dark;
+            }
+        }
+
+        &.ckout-whatsapp-btn-sm {
+            background: #25d366;
+
+            &:hover {
+                background: #128c7e;
+            }
+        }
+
+        &.ckout-pdf-btn-sm {
+            background: #dc3545;
+
+            &:hover {
+                background: #a71d2a;
+            }
+        }
+
+        &.ckout-view-btn-sm {
+            background: $primary-color;
+
+            &:hover {
+                background: $primary-dark;
+            }
+        }
+    }
+}
+
+// ============================================
+// STATUS BADGES
+// ============================================
+.ckout-status-badge {
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    display: inline-block;
+
+    &.ckout-status-completed {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    &.ckout-status-partial {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    &.ckout-status-cancelled {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    &.ckout-status-paid {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    &.ckout-status-partialpaid {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    &.ckout-status-notpaid {
+        background: #f8d7da;
+        color: #721c24;
+    }
+}
+
+// ============================================
+// PAGINATION
+// ============================================
+.ckout-pagination-container {
+    max-width: 1300px;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 14px 20px;
+    background: $white;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+}
+
+.ckout-pagination-info {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    color: #666;
+}
+
+.ckout-pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.ckout-pagination-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: $white;
+    border: 1.5px solid #e3e8f0;
+    color: #555;
+    padding: 7px 14px;
+    border-radius: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 36px;
+    justify-content: center;
+
+    &:hover:not(:disabled) {
+        background: $primary-color;
+        color: $white;
+        border-color: $primary-color;
+    }
+
+    &.ckout-active {
+        background: $primary-color;
+        color: $white;
+        border-color: $primary-color;
+    }
+
+    &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+}
+
+.ckout-pagination-dots {
+    color: #aab0bc;
+    padding: 0 4px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+// ============================================
+// LOADING STATES
+// ============================================
+.ckout-loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 40px;
+    text-align: center;
+
+    p {
+        font-family: 'Open Sans', sans-serif;
+        color: #888;
+        font-size: 15px;
+        margin: 14px 0 0;
+    }
+}
+
+.ckout-loading-spinner {
+    width: 22px;
+    height: 22px;
+    border: 2.5px solid #e8eaf0;
+    border-top: 2.5px solid $primary-color;
+    border-radius: 50%;
+    animation: ckout-spin 0.8s linear infinite;
+    display: inline-block;
+    flex-shrink: 0;
+
+    &.large {
+        width: 40px;
+        height: 40px;
+        border-width: 3px;
+    }
+
+    &.small {
+        width: 16px;
+        height: 16px;
+        border-width: 2px;
+    }
+}
+
+// ============================================
+// MODAL STYLES
+// ============================================
+.ckout-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(30, 30, 60, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: ckout-fadeIn 0.2s ease-out;
+    padding: 20px;
+
+    @keyframes ckout-fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+}
+
+.ckout-modal-content {
+    background: $white;
+    border-radius: $border-radius;
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px rgba(30, 30, 60, 0.18);
+    animation: ckout-slideUp 0.25s ease-out;
+
+    &.ckout-modal-lg {
+        max-width: 800px;
+    }
+
+    @keyframes ckout-slideUp {
+        from {
+            transform: translateY(16px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+}
+
+.ckout-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 22px;
+    border-bottom: 1px solid #eaeef6;
+    position: sticky;
+    top: 0;
+    background: $white;
+    z-index: 10;
+    border-radius: $border-radius $border-radius 0 0;
+}
+
+.ckout-modal-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: $primary-dark;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ckout-modal-close {
+    background: #f5f6fa;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 15px;
+    cursor: pointer;
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    padding: 0;
+
+    &:hover {
+        background: #ede8fa;
+        color: $primary-color;
+    }
+}
+
+.ckout-modal-body {
+    padding: 22px;
+}
+
+.ckout-details-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.ckout-detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f0f2f8;
+
+    &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    input,
+    textarea,
+    select {
+        width: 100%;
+        padding: 9px 13px;
+        border: 1.5px solid #e3e8f0;
+        border-radius: $border-radius-sm;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        color: #333;
+        background: #fafbfc;
+        box-sizing: border-box;
+        transition: border 0.25s, box-shadow 0.25s;
+
+        &:focus {
+            border-color: $primary-light;
+            outline: none;
+            background: $white;
+            box-shadow: 0 0 0 3px rgba(106, 106, 197, 0.12);
+        }
+    }
+
+    select {
+        cursor: pointer;
+    }
+
+    textarea {
+        min-height: 70px;
+        resize: vertical;
+    }
+}
+
+.ckout-detail-label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    color: #888;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ckout-detail-value {
+    font-family: 'Open Sans', sans-serif;
+    color: #2d2d50;
+    font-size: 14.5px;
+    word-break: break-word;
+}
+
+.ckout-extra-req-list,
+.ckout-id-proofs-list,
+.ckout-rooms-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ckout-extra-req-list-item {
+    border-bottom: 1px solid #eee;
+    padding: 3px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13.5px;
+    color: #444;
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+// ============================================
+// ROOM DETAIL ITEM (view mode room list, incl. removed)
+// ============================================
+.ckout-room-detail-item {
+    border: 1px solid #eee;
+    border-radius: $border-radius-sm;
+    padding: 10px 14px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13.5px;
+    color: #444;
+    background: #fafbfc;
+
+    &.ckout-room-removed {
+        background: #fdecea;
+        border-color: #f5c6cb;
+    }
+
+    small {
+        color: #888;
+    }
+}
+
+.ckout-removed-badge {
+    background: #f8d7da;
+    color: #721c24;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 2px 9px;
+    border-radius: 50px;
+    margin-left: 8px;
+    display: inline-block;
+}
+
+.ckout-removed-badge-sm {
+    background: #f8d7da;
+    color: #721c24;
+    font-family: 'Roboto', sans-serif;
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 1px 7px;
+    border-radius: 50px;
+    margin-left: 4px;
+    display: inline-block;
+}
+
+.ckout-removed-info-text {
+    color: #a94442;
+    font-style: italic;
+}
+
+// ============================================
+// MODAL FOOTER
+// ============================================
+.ckout-modal-footer {
+    padding: 16px 22px;
+    border-top: 1px solid #eaeef6;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: sticky;
+    bottom: 0;
+    background: $white;
+    z-index: 10;
+    border-radius: 0 0 $border-radius $border-radius;
+
+    button {
+        color: $white;
+        border: none;
+        padding: 10px 22px;
+        border-radius: 50px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 600;
+        font-size: 13.5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        transition: all 0.2s;
+        justify-content: center;
+
+        &:hover {
+            opacity: 0.92;
+            transform: translateY(-1px);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+
+        &:disabled {
+            background: #b8b8cc !important;
+            cursor: not-allowed;
+            transform: none;
+        }
+    }
+
+    .ckout-update-btn {
+        background: $primary-color;
+        box-shadow: 0 3px 8px rgba(63, 63, 145, 0.25);
+
+        &.ckout-save-btn {
+            background: #e55a2b;
+            box-shadow: 0 3px 8px rgba(229, 90, 43, 0.25);
+        }
+    }
+
+    .ckout-delete-btn {
+        background: $danger-color;
+        box-shadow: 0 3px 8px rgba(220, 53, 69, 0.25);
+    }
+
+    .ckout-export-btn {
+        background: $success-color;
+        box-shadow: 0 3px 8px rgba(40, 167, 69, 0.25);
+    }
+
+    .ckout-print-btn {
+        background: $primary-color;
+        box-shadow: 0 3px 8px rgba(63, 63, 145, 0.25);
+
+        &:hover {
+            background: $primary-dark;
+        }
+    }
+
+    .ckout-whatsapp-btn {
+        background: #25d366;
+        color: $white;
+        box-shadow: 0 3px 8px rgba(37, 211, 102, 0.3);
+
+        &:hover {
+            background: #128c7e;
+            box-shadow: 0 3px 8px rgba(18, 140, 126, 0.3);
+        }
+    }
+
+    .ckout-cancel-btn {
+        background: transparent;
+        color: #666;
+        border: 1.5px solid #dde1ed;
+        box-shadow: none;
+
+        &:hover {
+            background: #f5f6fb;
+            border-color: #c8cde0;
+        }
+    }
+}
+
+// ============================================
+// CONFIRM DIALOG
+// ============================================
+.ckout-confirm-dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(30, 30, 60, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1100;
+}
+
+.ckout-confirm-dialog {
+    background: $white;
+    border-radius: $border-radius;
+    padding: 26px;
+    max-width: 380px;
+    width: 90%;
+    box-shadow: 0 8px 32px rgba(30, 30, 60, 0.2);
+    text-align: center;
+
+    h3 {
+        font-family: 'Roboto', sans-serif;
+        margin: 0 0 12px;
+        color: $danger-color;
+        font-size: 17px;
+    }
+
+    p {
+        font-family: 'Open Sans', sans-serif;
+        margin-bottom: 22px;
+        line-height: 1.6;
+        color: #555;
+        font-size: 14px;
+    }
+
+    .ckout-confirm-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+
+        button {
+            padding: 9px 24px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .ckout-confirm-cancel {
+            background: #f0f2f8;
+            color: #555;
+            border: 1.5px solid #dde1ed;
+
+            &:hover {
+                background: #e5e8f0;
+            }
+        }
+
+        .ckout-confirm-delete {
+            background: $danger-color;
+            color: $white;
+            box-shadow: 0 3px 8px rgba(220, 53, 69, 0.25);
+
+            &:hover {
+                background: #c82333;
+                transform: translateY(-1px);
+            }
+        }
+    }
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
+@media screen and (max-width: 768px) {
+    .ckout-main {
+        padding: 16px 14px 32px;
+    }
+
+    .ckout-page-header {
+        padding: 14px 16px;
+        gap: 12px;
+
+        .ckout-right-section {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+        }
+
+        .ckout-search-container {
+            width: 100%;
+        }
+
+        .ckout-filters-group {
+            width: 100%;
+            flex-direction: column;
+
+            select,
+            input[type="date"] {
+                width: 100%;
+            }
+        }
+
+        .ckout-action-buttons-group {
+            width: 100%;
+
+            button {
+                flex: 1;
+                justify-content: center;
+            }
+        }
+    }
+
+    .ckout-data-table {
+        table {
+
+            th,
+            td {
+                padding: 11px 14px;
+                font-size: 13px;
+            }
+        }
+    }
+
+    .ckout-form-container {
+        padding: 18px;
+
+        .ckout-form-row {
+            flex-direction: column;
+            gap: 14px;
+        }
+    }
+
+    .ckout-discount-row {
+        flex-direction: column;
+    }
+
+    .ckout-price-breakdown-grid {
+        font-size: 13px;
+    }
+
+    .ckout-room-price-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .ckout-room-price-input .ckout-price-input {
+        width: 100%;
+    }
+
+    .ckout-modal-content {
+        width: 100%;
+        max-height: 88vh;
+        border-radius: 16px 16px 0 0;
+
+        &.ckout-modal-lg {
+            max-width: 100%;
+        }
+    }
+
+    .ckout-modal-overlay {
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .ckout-modal-footer {
+        button {
+            flex: 1;
+            min-width: calc(50% - 5px);
+        }
+    }
+
+    .ckout-edit-req-row,
+    .ckout-edit-proof-row,
+    .ckout-edit-proof-add-row {
+        flex-wrap: wrap;
+    }
+
+    .ckout-payment-row {
+        flex-direction: column;
+        align-items: stretch;
+
+        .ckout-remove-payment-btn {
+            align-self: flex-end;
+        }
+    }
+}
+
+// ============================================
+// PRICE BREAKDOWN FIX - FLEX ROW LAYOUT (paste at bottom)
+// ============================================
+.ckout-price-breakdown-grid {
+    display: flex !important;
+    flex-direction: column;
+    gap: 6px;
+
+    .ckout-price-line {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 12px;
+        width: 100%;
+
+        .ckout-room-price-label {
+            padding-left: 8px;
+            flex: 1;
+        }
+
+        .ckout-price-val {
+            white-space: nowrap;
+            text-align: right;
+            flex-shrink: 0;
+        }
+    }
+
+    .ckout-price-total-line {
+        border-top: 1px dashed #ddd;
+        padding-top: 4px;
+        margin-top: 2px;
+    }
+
+    .ckout-price-section-label {
+        margin-top: 6px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}
+
+
+// ============================================
+// INDIVIDUAL BUTTON LOADING STATES
+// ============================================
+
+// Table action buttons - individual loading
+.ckout-action-buttons {
+    .ckout-action-btn {
+        position: relative;
+        transition: all 0.25s ease;
+
+        &:disabled {
+            opacity: 0.6 !important;
+            cursor: not-allowed !important;
+            transform: none !important;
+
+            &:hover {
+                transform: none !important;
+                opacity: 0.6 !important;
+            }
+        }
+
+        .ckout-loading-spinner.small {
+            width: 14px;
+            height: 14px;
+            border-width: 2px;
+            border-color: rgba(255, 255, 255, 0.3);
+            border-top-color: #ffffff;
+            animation: ckout-spin 0.8s linear infinite;
+            flex-shrink: 0;
+        }
+
+        // Disabled state for specific button types
+        &.ckout-whatsapp-btn-sm:disabled,
+        &.ckout-pdf-btn-sm:disabled,
+        &.ckout-print-btn-sm:disabled {
+            opacity: 0.5 !important;
+            transform: none !important;
+
+            &:hover {
+                transform: none !important;
+            }
+        }
+    }
+}
+
+// Modal footer buttons with loading
+.ckout-modal-footer {
+    button {
+        &:disabled {
+            opacity: 0.6 !important;
+            cursor: not-allowed !important;
+            transform: none !important;
+            pointer-events: none !important;
+
+            &:hover {
+                transform: none !important;
+                opacity: 0.6 !important;
+            }
+        }
+
+        .ckout-loading-spinner.small {
+            width: 14px;
+            height: 14px;
+            border-width: 2px;
+            border-color: rgba(255, 255, 255, 0.3);
+            border-top-color: #ffffff;
+            animation: ckout-spin 0.8s linear infinite;
+            flex-shrink: 0;
+        }
+    }
+}
+
+// Export button loading
+.ckout-export-all-btn {
+    &:disabled {
+        opacity: 0.6 !important;
+        cursor: not-allowed !important;
+        transform: none !important;
+
+        .ckout-loading-spinner.small {
+            width: 14px;
+            height: 14px;
+            border-width: 2px;
+            border-color: rgba(255, 255, 255, 0.3);
+            border-top-color: #ffffff;
+            animation: ckout-spin 0.8s linear infinite;
+        }
+    }
+}
+
+// Form submit button loading
+.ckout-form-container {
+    button[type='submit'] {
+        &:disabled {
+            opacity: 0.6 !important;
+            cursor: not-allowed !important;
+            transform: none !important;
+
+            .ckout-loading-spinner.small {
+                width: 16px;
+                height: 16px;
+                border-width: 2px;
+                border-color: rgba(255, 255, 255, 0.3);
+                border-top-color: #ffffff;
+                animation: ckout-spin 0.8s linear infinite;
+            }
+        }
+    }
+}
+
+// WhatsApp button in modal
+.ckout-whatsapp-btn {
+    &:disabled {
+        opacity: 0.6 !important;
+        cursor: not-allowed !important;
+        transform: none !important;
+
+        .ckout-loading-spinner.small {
+            width: 14px;
+            height: 14px;
+            border-width: 2px;
+            border-color: rgba(255, 255, 255, 0.3);
+            border-top-color: #ffffff;
+            animation: ckout-spin 0.8s linear infinite;
+        }
+    }
+}
+
+// PDF button in modal
+.ckout-export-btn {
+    &:disabled {
+        opacity: 0.6 !important;
+        cursor: not-allowed !important;
+        transform: none !important;
+
+        .ckout-loading-spinner.small {
+            width: 14px;
+            height: 14px;
+            border-width: 2px;
+            border-color: rgba(255, 255, 255, 0.3);
+            border-top-color: #ffffff;
+            animation: ckout-spin 0.8s linear infinite;
+        }
+    }
+}
+
+// Print button in modal
+.ckout-print-btn {
+    &:disabled {
+        opacity: 0.6 !important;
+        cursor: not-allowed !important;
+        transform: none !important;
+
+        .ckout-loading-spinner.small {
+            width: 14px;
+            height: 14px;
+            border-width: 2px;
+            border-color: rgba(255, 255, 255, 0.3);
+            border-top-color: #ffffff;
+            animation: ckout-spin 0.8s linear infinite;
+        }
+    }
+}
+
+// Ensure buttons with loading show spinner properly
+button {
+    .ckout-loading-spinner.small {
+        display: inline-block;
+        flex-shrink: 0;
+    }
+}
+
+// Spinner animation
+@keyframes ckout-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+// Responsive adjustments
+@media screen and (max-width: 768px) {
+    .ckout-action-buttons {
+        .ckout-action-btn {
+            .ckout-loading-spinner.small {
+                width: 12px;
+                height: 12px;
+            }
+        }
+    }
+
+    .ckout-modal-footer {
+        button {
+            .ckout-loading-spinner.small {
+                width: 12px;
+                height: 12px;
+            }
+        }
+    }
+}
+
+
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+
+    html,
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        height: auto !important;
+    }
+
+    body.ckout-print-mode>*:not(.ckout-print-target) {
+        display: none !important;
+    }
+
+    body.ckout-print-mode .ckout-print-target {
+        position: static !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        visibility: visible !important;
+    }
+
+    body.ckout-print-mode .ckout-print-target * {
+        visibility: visible !important;
+    }
+}

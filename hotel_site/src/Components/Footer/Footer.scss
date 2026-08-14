@@ -1,0 +1,584 @@
+// Footer.scss - COMPLETE UPDATED VERSION
+$primary-color: #3d52a0;
+$secondary-color: #7091e6;
+$slate-color: #8697c4;
+$lavender-gray: #adbbda;
+$light-bg: #ede8f5;
+$card-bg: #ffffff;
+
+$font-heading: "Montserrat", sans-serif;
+$font-body: "Nunito", sans-serif;
+
+.footer {
+    position: relative;
+    width: 100%;
+    background: #24243e;
+    padding: 60px 0 0;
+    overflow: hidden;
+
+    &__bg-text {
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: $font-heading;
+        font-weight: 800;
+        font-size: clamp(80px, 14vw, 220px);
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.06);
+        white-space: nowrap;
+        letter-spacing: 4px;
+        z-index: 0;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    &__container {
+        position: relative;
+        z-index: 1;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 40px;
+        box-sizing: border-box;
+    }
+
+    &__cta-strip {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 24px;
+        padding-bottom: 30px;
+    }
+
+    &__cta-title {
+        font-family: $font-heading;
+        font-weight: 800;
+        font-size: clamp(24px, 3vw, 36px);
+        color: #ffffff;
+        margin: 0;
+        max-width: 560px;
+        line-height: 1.25;
+    }
+
+    &__cta-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+        font-family: $font-body;
+        font-weight: 700;
+        font-size: 15px;
+        color: #24243e;
+        background: #ffffff;
+        padding: 16px 34px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: transform 0.3s ease, background 0.3s ease;
+
+        &:hover {
+            background: $secondary-color;
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+    }
+
+    &__divider {
+        width: 100%;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    &__columns {
+        display: grid;
+        grid-template-columns: 1.3fr 0.8fr 1fr 1.1fr;
+        gap: 50px;
+        padding: 60px 0;
+    }
+
+    &__col {
+        min-width: 0;
+    }
+
+    &__logo {
+        display: inline-block;
+        font-family: $font-heading;
+        font-size: 24px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 16px;
+    }
+
+    &__logo-accent {
+        color: $secondary-color;
+    }
+
+    &__tagline {
+        font-family: $font-body;
+        font-weight: 500;
+        font-size: 14.5px;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.65);
+        margin: 0 0 24px;
+        max-width: 280px;
+    }
+
+    &__socials {
+        display: flex;
+        gap: 12px;
+    }
+
+    &__social-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        color: #ffffff;
+        font-size: 14px;
+        transition: background 0.3s ease, transform 0.3s ease;
+
+        &:hover {
+            background: $secondary-color;
+            transform: translateY(-3px);
+        }
+    }
+
+    &__col-title {
+        font-family: $font-heading;
+        font-weight: 700;
+        font-size: 16px;
+        color: #ffffff;
+        margin: 0 0 22px;
+    }
+
+    // ===== QUICK LINKS with active state =====
+    &__links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+
+        li {
+            a {
+                font-family: $font-body;
+                font-weight: 500;
+                font-size: 14.5px;
+                color: rgba(255, 255, 255, 0.65);
+                text-decoration: none;
+                transition: color 0.3s ease, transform 0.3s ease;
+
+                &:hover {
+                    color: #ffffff;
+                    transform: translateX(4px);
+                }
+
+                &.footer__link-active {
+                    color: $secondary-color;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    // ===== CONTACT LIST with hover animations =====
+    &__contact-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    &__contact-item {
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: translateX(6px);
+        }
+    }
+
+    &__contact-link {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-family: $font-body;
+        font-weight: 500;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.65);
+        line-height: 1.5;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: #ffffff;
+
+            svg {
+                color: $secondary-color;
+                transform: scale(1.15);
+            }
+        }
+
+        svg {
+            color: $secondary-color;
+            font-size: 14px;
+            margin-top: 3px;
+            flex-shrink: 0;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        span {
+            transition: color 0.3s ease;
+        }
+    }
+
+    &__newsletter-text {
+        font-family: $font-body;
+        font-weight: 500;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.65);
+        line-height: 1.6;
+        margin: 0 0 18px;
+    }
+
+    &__newsletter {
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 30px;
+        padding: 5px 5px 5px 18px;
+        max-width: 280px;
+    }
+
+    &__newsletter-input {
+        flex: 1;
+        min-width: 0;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-family: $font-body;
+        font-size: 13.5px;
+        color: #ffffff;
+
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    &__newsletter-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        flex-shrink: 0;
+        border: none;
+        border-radius: 50%;
+        background: $secondary-color;
+        color: #ffffff;
+        font-size: 13px;
+        cursor: pointer;
+        transition: background 0.3s ease, opacity 0.3s ease;
+
+        &:hover:not(:disabled) {
+            background: $primary-color;
+        }
+
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    }
+
+    // ===== SPINNER =====
+    &__spinner {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-top-color: #ffffff;
+        border-radius: 50%;
+        animation: footerSpin 0.8s linear infinite;
+    }
+
+    &__bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 14px;
+        padding: 26px 0;
+    }
+
+    &__copyright {
+        font-family: $font-body;
+        font-weight: 500;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        margin: 0;
+    }
+
+    &__bottom-links {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+    }
+
+    &__design-credit {
+        font-family: $font-body;
+        font-weight: 500;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+
+        a {
+            color: $secondary-color;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: #ffffff;
+            }
+        }
+    }
+
+    // ============================================
+    // RESPONSIVE - TABLET & MOBILE
+    // ============================================
+    
+    @media (max-width: 1024px) {
+        padding: 50px 0 0;
+
+        &__container {
+            padding: 0 32px;
+        }
+
+        &__cta-strip {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        &__cta-title {
+            max-width: 100%;
+            text-align: center;
+        }
+
+        &__cta-btn {
+            width: 100%;
+            max-width: 300px;
+            justify-content: center;
+        }
+
+        &__columns {
+            grid-template-columns: 1fr;
+            gap: 40px;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        &__col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        &__tagline {
+            max-width: 100%;
+            text-align: center;
+        }
+
+        &__socials {
+            justify-content: center;
+        }
+
+        &__links {
+            align-items: center;
+            
+            li a {
+                text-align: center;
+            }
+        }
+
+        &__contact-list {
+            align-items: center;
+        }
+
+        &__contact-item {
+            &:hover {
+                transform: translateX(0);
+            }
+        }
+
+        &__contact-link {
+            justify-content: center;
+            text-align: center;
+        }
+
+        &__newsletter {
+            max-width: 100%;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        &__newsletter-text {
+            text-align: center;
+        }
+
+        &__bottom {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        &__bottom-links {
+            justify-content: center;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        &__bg-text {
+            top: 20px;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.04);
+        }
+    }
+
+    @media (max-width: 640px) {
+        padding: 40px 0 0;
+
+        &__container {
+            padding: 0 24px;
+        }
+
+        &__cta-title {
+            font-size: 22px;
+        }
+
+        &__cta-btn {
+            max-width: 100%;
+            padding: 14px 28px;
+            font-size: 14px;
+        }
+
+        &__columns {
+            gap: 36px;
+            padding: 30px 0;
+        }
+
+        &__logo {
+            font-size: 22px;
+        }
+
+        &__tagline {
+            font-size: 14px;
+        }
+
+        &__col-title {
+            font-size: 15px;
+            margin-bottom: 18px;
+        }
+
+        &__links {
+            gap: 12px;
+            
+            li a {
+                font-size: 14px;
+            }
+        }
+
+        &__contact-list {
+            gap: 14px;
+        }
+
+        &__contact-link {
+            font-size: 13px;
+            gap: 10px;
+            
+            svg {
+                font-size: 13px;
+            }
+        }
+
+        &__newsletter {
+            max-width: 100%;
+            width: 100%;
+        }
+
+        &__newsletter-input {
+            font-size: 13px;
+        }
+
+        &__newsletter-btn {
+            width: 36px;
+            height: 36px;
+            font-size: 12px;
+        }
+
+        &__spinner {
+            width: 16px;
+            height: 16px;
+        }
+
+        &__copyright {
+            font-size: 12px;
+        }
+
+        &__design-credit {
+            font-size: 12px;
+        }
+
+        &__bg-text {
+            font-size: clamp(50px, 10vw, 100px);
+            top: 30px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        &__container {
+            padding: 0 18px;
+        }
+
+        &__cta-title {
+            font-size: 20px;
+        }
+
+        &__cta-btn {
+            font-size: 13px;
+            padding: 12px 20px;
+        }
+
+        &__columns {
+            gap: 30px;
+            padding: 24px 0;
+        }
+
+        &__social-icon {
+            width: 34px;
+            height: 34px;
+            font-size: 12px;
+        }
+
+        &__spinner {
+            width: 14px;
+            height: 14px;
+        }
+    }
+}
+
+// ===== SPINNER ANIMATION =====
+@keyframes footerSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}

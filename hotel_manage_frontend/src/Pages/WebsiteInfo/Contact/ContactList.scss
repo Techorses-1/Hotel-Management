@@ -1,0 +1,941 @@
+// Pages/Contact/ContactList.scss
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;900&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+$cl-primary: #3f3f91;
+$cl-primary-light: #6a6ac5;
+$cl-primary-dark: #2d2f87;
+$cl-success: #28a745;
+$cl-danger: #dc3545;
+$cl-warning: #e67e22;
+$cl-info: #17a2b8;
+$cl-bg: #dfeafb;
+$cl-white: #ffffff;
+$cl-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+$cl-radius: 14px;
+$cl-radius-sm: 8px;
+
+// ============================================
+// MAIN CONTAINER
+// ============================================
+.cl-main-container {
+    background: $cl-bg !important;
+    font-family: 'Open Sans', sans-serif !important;
+    min-height: 100vh;
+    padding: 24px 28px 40px;
+}
+
+// ============================================
+// PAGE HEADER
+// ============================================
+.cl-page-header {
+    max-width: 1300px;
+    margin: 0 auto 22px;
+    padding: 18px 24px;
+    background: $cl-white;
+    border-radius: $cl-radius;
+    box-shadow: $cl-shadow;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+
+    .cl-left-section {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: $cl-primary-dark;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cl-total-count {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12.5px;
+            color: #888;
+        }
+    }
+
+    .cl-right-section {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        button {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: $cl-white;
+            padding: 9px 20px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.22s ease;
+            border-radius: 50px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.13);
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 14px rgba(0, 0, 0, 0.18);
+            }
+        }
+
+        .cl-refresh-btn {
+            background: linear-gradient(135deg, $cl-primary, $cl-primary-light);
+
+            &:hover {
+                background: linear-gradient(135deg, $cl-primary-dark, $cl-primary);
+            }
+        }
+    }
+}
+
+// ============================================
+// SUMMARY CARDS
+// ============================================
+.cl-summary-cards {
+    max-width: 1300px;
+    margin: 0 auto 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.cl-summary-card {
+    background: $cl-white;
+    border-radius: $cl-radius;
+    box-shadow: $cl-shadow;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-top: 3px solid $cl-primary;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.11);
+    }
+
+    .cl-summary-label {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 12.5px;
+        color: #888;
+    }
+
+    .cl-summary-value {
+        font-family: 'Roboto', sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        color: $cl-primary-dark;
+    }
+
+    &.cl-total {
+        border-top-color: $cl-primary;
+    }
+
+    &.cl-pending {
+        border-top-color: $cl-warning;
+
+        .cl-summary-value {
+            color: $cl-warning;
+        }
+    }
+
+    &.cl-unread {
+        border-top-color: $cl-danger;
+
+        .cl-summary-value {
+            color: $cl-danger;
+        }
+    }
+
+    &.cl-today {
+        border-top-color: $cl-info;
+
+        .cl-summary-value {
+            color: $cl-info;
+        }
+    }
+}
+
+// ============================================
+// FILTERS SECTION
+// ============================================
+.cl-filters-section {
+    max-width: 1300px;
+    margin: 0 auto 22px;
+    padding: 16px 20px;
+    background: $cl-white;
+    border-radius: $cl-radius;
+    box-shadow: $cl-shadow;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.cl-search-container {
+    position: relative;
+    width: 280px;
+
+    input {
+        width: 100%;
+        padding: 9px 14px 9px 38px;
+        border: 1.5px solid #e3e8f0;
+        border-radius: 50px;
+        background: #f5f7fa;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        color: #333;
+        box-sizing: border-box;
+        transition: all 0.25s;
+
+        &:focus {
+            outline: none;
+            border-color: $cl-primary-light;
+            background: $cl-white;
+            box-shadow: 0 0 0 3px rgba(106, 106, 197, 0.12);
+        }
+
+        &::placeholder {
+            color: #aab0bc;
+        }
+    }
+
+    .cl-search-icon {
+        position: absolute;
+        top: 50%;
+        left: 13px;
+        transform: translateY(-50%);
+        color: #aab0bc;
+        font-size: 14px;
+        pointer-events: none;
+    }
+}
+
+.cl-filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    // flex-wrap: wrap; 
+
+    select,
+    input[type="date"] {
+        padding: 9px 14px;
+        border: 1.5px solid #e3e8f0;
+        border-radius: 50px;
+        background: #f5f7fa;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 13.5px;
+        color: #333;
+        cursor: pointer;
+        transition: all 0.25s;
+
+        &:focus {
+            outline: none;
+            border-color: $cl-primary-light;
+            background: $cl-white;
+            box-shadow: 0 0 0 3px rgba(106, 106, 197, 0.12);
+        }
+    }
+
+    .cl-clear-filters {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: transparent;
+        color: #666;
+        border: 1.5px solid #dde1ed;
+        padding: 8px 18px;
+        border-radius: 50px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 600;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover {
+            background: #f5f6fb;
+            border-color: #c8cde0;
+            color: $cl-danger;
+        }
+    }
+}
+
+// ============================================
+// DATA TABLE
+// ============================================
+.cl-data-table {
+    max-width: 1300px;
+    margin: 0 auto 20px;
+    background: $cl-white;
+    border-radius: $cl-radius;
+    box-shadow: $cl-shadow;
+    overflow: hidden;
+    overflow-x: auto;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+
+        thead {
+            background: #f7f8fc;
+            border-bottom: 1.5px solid #eaeef6;
+        }
+
+        th {
+            padding: 14px 20px;
+            text-align: left;
+            font-family: 'Roboto', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #6b6b9a;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 13px 20px;
+            text-align: left;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            color: #3a3a5c;
+            border-bottom: 1px solid #f0f2f8;
+            white-space: nowrap;
+        }
+
+        tr {
+            cursor: pointer;
+            transition: background-color 0.15s;
+
+            &:last-child td {
+                border-bottom: none;
+            }
+
+            &:hover td {
+                background-color: #f5f6fb;
+            }
+
+            &.cl-selected td {
+                background-color: #edf0fc;
+                color: $cl-primary-dark;
+            }
+
+            &.cl-unread-row td {
+                font-weight: 600;
+                background-color: #fff9f9;
+            }
+
+            &.cl-unread-row:hover td {
+                background-color: #fff0f0;
+            }
+        }
+    }
+}
+
+// ============================================
+// STATUS BADGES
+// ============================================
+.cl-status-badge {
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    display: inline-block;
+    white-space: nowrap;
+
+    &.cl-status-pending {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    &.cl-status-read {
+        background: #cce5ff;
+        color: #004085;
+    }
+
+    &.cl-status-replied {
+        background: #d4edda;
+        color: #155724;
+    }
+}
+
+.cl-read-badge {
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    display: inline-block;
+    white-space: nowrap;
+
+    &.cl-read-true {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    &.cl-read-false {
+        background: #f8d7da;
+        color: #721c24;
+    }
+}
+
+// ============================================
+// LOADING STATES
+// ============================================
+.cl-loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 40px;
+    text-align: center;
+
+    p {
+        font-family: 'Open Sans', sans-serif;
+        color: #888;
+        font-size: 15px;
+        margin: 14px 0 0;
+    }
+}
+
+.cl-loading-spinner {
+    width: 22px;
+    height: 22px;
+    border: 2.5px solid #e8eaf0;
+    border-top: 2.5px solid $cl-primary;
+    border-radius: 50%;
+    animation: cl-spin 0.8s linear infinite;
+    display: inline-block;
+    flex-shrink: 0;
+
+    &.cl-large {
+        width: 40px;
+        height: 40px;
+        border-width: 3px;
+    }
+
+    &.cl-small {
+        width: 16px;
+        height: 16px;
+        border-width: 2px;
+    }
+}
+
+@keyframes cl-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.cl-empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    .cl-empty-icon {
+        font-size: 40px;
+        color: #c5cbdf;
+        margin-bottom: 6px;
+    }
+
+    p {
+        font-family: 'Open Sans', sans-serif;
+        color: #888;
+        font-size: 15px;
+        margin: 0;
+    }
+
+    small {
+        color: #aab0bc;
+        font-size: 12.5px;
+    }
+}
+
+// ============================================
+// PAGINATION
+// ============================================
+.cl-pagination {
+    max-width: 1300px;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    .cl-page-btn {
+        background: $cl-white;
+        border: 1.5px solid #e3e8f0;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $cl-primary;
+        transition: all 0.2s;
+
+        &:hover:not(:disabled) {
+            background: $cl-primary;
+            color: $cl-white;
+            border-color: $cl-primary;
+        }
+
+        &:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+    }
+
+    .cl-page-info {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 13.5px;
+        color: #666;
+    }
+}
+
+// ============================================
+// MODAL STYLES (Same as WebsiteBookingList modal)
+// ============================================
+.cl-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(30, 30, 60, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: cl-fadeIn 0.2s ease-out;
+    padding: 20px;
+}
+
+@keyframes cl-fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.cl-modal-content {
+    background: $cl-white;
+    border-radius: $cl-radius;
+    width: 100%;
+    max-width: 500px !important;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px rgba(30, 30, 60, 0.18);
+    animation: cl-slideUp 0.25s ease-out;
+
+    &.cl-modal-lg {
+        max-width: 700px;
+    }
+}
+
+@keyframes cl-slideUp {
+    from {
+        transform: translateY(16px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.cl-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 22px;
+    border-bottom: 1px solid #eaeef6;
+    position: sticky;
+    top: 0;
+    background: $cl-white;
+    z-index: 10;
+    border-radius: $cl-radius $cl-radius 0 0;
+}
+
+.cl-modal-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: $cl-primary-dark;
+}
+
+.cl-modal-close {
+    background: #f5f6fa;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 15px;
+    cursor: pointer;
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    padding: 0;
+
+    &:hover {
+        background: #ede8fa;
+        color: $cl-primary;
+    }
+}
+
+.cl-modal-body {
+    padding: 22px;
+}
+
+.cl-details-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.cl-detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f0f2f8;
+
+    &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+}
+
+.cl-edit-input,
+.cl-edit-textarea {
+    width: 100%;
+    padding: 9px 13px;
+    border: 1.5px solid #e3e8f0;
+    border-radius: $cl-radius-sm;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #333;
+    background: #fafbfc;
+    box-sizing: border-box;
+    transition: border 0.25s, box-shadow 0.25s;
+
+    &:focus {
+        border-color: $cl-primary-light;
+        outline: none;
+        background: $cl-white;
+        box-shadow: 0 0 0 3px rgba(106, 106, 197, 0.12);
+    }
+}
+
+.cl-edit-textarea {
+    min-height: 70px;
+    resize: vertical;
+}
+
+.cl-detail-label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    color: #888;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cl-detail-value {
+    font-family: 'Open Sans', sans-serif;
+    color: #2d2d50;
+    font-size: 14.5px;
+    word-break: break-word;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.cl-message-content {
+    background: #f8f9fa;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border-left: 3px solid $cl-primary;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #444;
+    width: 100%;
+}
+
+.cl-email-link {
+    color: $cl-primary;
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// ============================================
+// MODAL FOOTER
+// ============================================
+.cl-modal-footer {
+    padding: 16px 22px;
+    border-top: 1px solid #eaeef6;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: sticky;
+    bottom: 0;
+    background: $cl-white;
+    z-index: 10;
+    border-radius: 0 0 $cl-radius $cl-radius;
+
+    button,
+    a.cl-reply-btn {
+        color: $cl-white;
+        border: none;
+        padding: 10px 22px;
+        border-radius: 50px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 600;
+        font-size: 13.5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        transition: all 0.2s;
+        justify-content: center;
+        text-decoration: none;
+
+        &:hover:not(:disabled) {
+            opacity: 0.92;
+            transform: translateY(-1px);
+        }
+
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+    }
+
+    .cl-reply-btn {
+        background: $cl-info;
+        box-shadow: 0 3px 8px rgba(23, 162, 184, 0.25);
+
+        &:hover:not(:disabled) {
+            background: #138496;
+        }
+    }
+
+    .cl-update-btn {
+        background: $cl-primary;
+        box-shadow: 0 3px 8px rgba(63, 63, 145, 0.25);
+
+        &:hover:not(:disabled) {
+            background: $cl-primary-dark;
+        }
+    }
+
+    .cl-delete-btn {
+        background: $cl-danger;
+        box-shadow: 0 3px 8px rgba(220, 53, 69, 0.25);
+
+        &:hover:not(:disabled) {
+            background: #c82333;
+        }
+    }
+}
+
+// ============================================
+// CONFIRM DIALOG
+// ============================================
+.cl-confirm-dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(30, 30, 60, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1100;
+}
+
+.cl-confirm-dialog {
+    background: $cl-white;
+    border-radius: $cl-radius;
+    padding: 26px;
+    max-width: 380px;
+    width: 90%;
+    box-shadow: 0 8px 32px rgba(30, 30, 60, 0.2);
+    text-align: center;
+
+    h3 {
+        font-family: 'Roboto', sans-serif;
+        margin: 0 0 12px;
+        color: $cl-danger;
+        font-size: 17px;
+    }
+
+    p {
+        font-family: 'Open Sans', sans-serif;
+        margin-bottom: 22px;
+        line-height: 1.6;
+        color: #555;
+        font-size: 14px;
+    }
+
+    .cl-confirm-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+
+        button {
+            padding: 9px 24px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .cl-confirm-cancel {
+            background: #f0f2f8;
+            color: #555;
+            border: 1.5px solid #dde1ed;
+
+            &:hover {
+                background: #e5e8f0;
+            }
+        }
+
+        .cl-confirm-delete {
+            background: $cl-danger;
+            color: $cl-white;
+            box-shadow: 0 3px 8px rgba(220, 53, 69, 0.25);
+
+            &:hover {
+                background: #c82333;
+                transform: translateY(-1px);
+            }
+        }
+    }
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
+@media screen and (max-width: 768px) {
+    .cl-main-container {
+        padding: 16px 14px 32px;
+    }
+
+    .cl-page-header {
+        padding: 14px 16px;
+        flex-direction: column;
+        align-items: stretch;
+
+        .cl-right-section {
+            button {
+                flex: 1;
+                justify-content: center;
+            }
+        }
+    }
+
+    .cl-summary-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .cl-filters-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cl-search-container {
+        width: 100%;
+    }
+
+    .cl-filter-group {
+        width: 100%;
+
+        select,
+        input[type="date"] {
+            flex: 1;
+            min-width: 130px;
+        }
+    }
+
+    .cl-data-table {
+        table {
+
+            th,
+            td {
+                padding: 11px 14px;
+                font-size: 13px;
+            }
+        }
+    }
+
+    .cl-modal-content {
+        width: 100%;
+        max-height: 88vh;
+        border-radius: 16px 16px 0 0;
+
+        &.cl-modal-lg {
+            max-width: 100%;
+        }
+    }
+
+    .cl-modal-overlay {
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .cl-modal-footer {
+
+        button,
+        a.cl-reply-btn {
+            flex: 1;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .cl-summary-cards {
+        grid-template-columns: 1fr;
+    }
+}

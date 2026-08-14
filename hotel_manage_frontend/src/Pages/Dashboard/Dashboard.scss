@@ -1,0 +1,736 @@
+// ============================================
+// GOOGLE FONTS IMPORT
+// ============================================
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;900&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+// ============================================
+// VARIABLES
+// ============================================
+$primary-color: #3f3f91;
+$primary-light: #6a6ac5;
+$primary-dark: #2d2f87;
+$success-color: #28a745;
+$danger-color: #dc3545;
+$warning-color: #e67e22;
+$info-color: #0096a8;
+$bg-color: #dfeafb;
+$white: #ffffff;
+$shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+$border-radius: 14px;
+$border-radius-sm: 8px;
+
+// ============================================
+// MAIN CONTAINER
+// ============================================
+.dashboard-main {
+    background: $bg-color !important;
+    font-family: 'Open Sans', sans-serif !important;
+    min-height: 100vh;
+    padding: 24px 28px 40px;
+}
+
+// ============================================
+// DASHBOARD HEADER
+// ============================================
+.dashboard-header {
+    max-width: 1400px;
+    margin: 0 auto 22px;
+    padding: 18px 24px;
+    background: $white;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.dashboard-title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    h1 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        color: $primary-dark;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .last-updated {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 12.5px;
+        color: #888;
+    }
+}
+
+.refresh-btn {
+    background: linear-gradient(135deg, $primary-color, $primary-light);
+    color: $white;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 3px 10px rgba(63, 63, 145, 0.25);
+    transition: all 0.25s;
+
+    &:hover:not(:disabled) {
+        background: linear-gradient(135deg, $primary-dark, $primary-color);
+        box-shadow: 0 5px 14px rgba(63, 63, 145, 0.35);
+        transform: translateY(-1px);
+    }
+
+    &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+
+    .spin {
+        animation: spin 0.9s linear infinite;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+// ============================================
+// STATS CARDS
+// ============================================
+.stats-grid {
+    max-width: 1400px;
+    margin: 0 auto 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.stat-card {
+    background: $white;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-left: 4px solid transparent;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.11);
+    }
+
+    .stat-card-icon {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+    }
+
+    .stat-card-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .stat-card-value {
+        font-family: 'Roboto', sans-serif;
+        font-size: 26px;
+        font-weight: 700;
+        color: $primary-dark;
+        line-height: 1.1;
+    }
+
+    .stat-card-label {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 13px;
+        color: #888;
+    }
+
+    .stat-card-subtext {
+        font-family: 'Roboto', sans-serif;
+        font-size: 11.5px;
+        font-weight: 600;
+        color: $primary-color;
+        margin-top: 2px;
+    }
+
+    &.primary .stat-card-icon {
+        background: #edf0fc;
+        color: $primary-color;
+    }
+
+    &.success .stat-card-icon {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    &.warning .stat-card-icon {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    &.info .stat-card-icon {
+        background: #d6f5f8;
+        color: $info-color;
+    }
+
+    &.primary {
+        border-left-color: $primary-color;
+    }
+
+    &.success {
+        border-left-color: $success-color;
+    }
+
+    &.warning {
+        border-left-color: $warning-color;
+    }
+
+    &.info {
+        border-left-color: $info-color;
+    }
+}
+
+// ============================================
+// REVENUE CARDS
+// ============================================
+.revenue-grid {
+    max-width: 1400px;
+    margin: 0 auto 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.revenue-card {
+    background: linear-gradient(135deg, $primary-color, $primary-light);
+    border-radius: $border-radius;
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow: 0 4px 14px rgba(63, 63, 145, 0.25);
+
+    .revenue-label {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.85);
+    }
+
+    .revenue-amount {
+        font-family: 'Roboto', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: $white;
+    }
+}
+
+// ============================================
+// MIDDLE SECTION (Occupancy Chart + Activity)
+// ============================================
+.middle-section {
+    max-width: 1400px;
+    margin: 0 auto 20px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 16px;
+    align-items: stretch;
+}
+
+.chart-card,
+.activity-card {
+    background: $white;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+    padding: 22px;
+
+    h3 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: $primary-dark;
+        margin: 0 0 18px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    h4 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 13.5px;
+        font-weight: 600;
+        color: $primary-dark;
+        margin: 0 0 12px;
+    }
+}
+
+.no-data {
+    text-align: center;
+    padding: 30px 10px;
+    color: #aab0bc;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13.5px;
+}
+
+// ============================================
+// TODAY'S ACTIVITY
+// ============================================
+.activity-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.activity-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px 16px;
+    background: #f7f8fc;
+    border-radius: $border-radius-sm;
+    position: relative;
+
+    .activity-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        margin-bottom: 2px;
+
+        &.check-in {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        &.check-out {
+            background: #fde2e2;
+            color: #b0281f;
+        }
+
+        &.booking {
+            background: #edf0fc;
+            color: $primary-color;
+        }
+
+        &.cleaning {
+            background: #fff3cd;
+            color: #856404;
+        }
+    }
+
+    .activity-label {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 12.5px;
+        color: #888;
+    }
+
+    .activity-value {
+        font-family: 'Roboto', sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        color: $primary-dark;
+    }
+}
+
+.revenue-category-section {
+    border-top: 1px solid #eaeef6;
+    padding-top: 18px;
+}
+
+// ============================================
+// TODAY'S SECTION (Check-ins & Check-outs)
+// ============================================
+.today-section {
+    max-width: 1400px;
+    margin: 0 auto 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.today-card {
+    background: $white;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+    padding: 22px;
+}
+
+.today-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+
+    h3 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: $primary-dark;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+}
+
+.today-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+        background: #f7f8fc;
+        border-bottom: 1.5px solid #eaeef6;
+    }
+
+    th {
+        padding: 10px 14px;
+        text-align: left;
+        font-family: 'Roboto', sans-serif;
+        font-size: 11.5px;
+        font-weight: 600;
+        color: #6b6b9a;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    td {
+        padding: 11px 14px;
+        text-align: left;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 13.5px;
+        color: #3a3a5c;
+        border-bottom: 1px solid #f0f2f8;
+        white-space: nowrap;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    tr:hover td {
+        background-color: #f5f6fb;
+    }
+
+    .phone-small {
+        display: block;
+        font-size: 11.5px;
+        color: #999;
+        margin-top: 2px;
+    }
+}
+
+// ============================================
+// BOTTOM SECTION (Upcoming Bookings/Check-outs)
+// ============================================
+.bottom-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.upcoming-card {
+    background: $white;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+    padding: 22px;
+}
+
+.upcoming-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+
+    h3 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: $primary-dark;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+}
+
+.date-picker-wrap {
+    display: flex;
+}
+
+.date-picker {
+    padding: 8px 14px;
+    border: 1.5px solid #e3e8f0;
+    border-radius: 50px;
+    background: #f5f7fa;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.25s;
+
+    &:focus {
+        outline: none;
+        border-color: $primary-light;
+        background: $white;
+        box-shadow: 0 0 0 3px rgba(106, 106, 197, 0.12);
+    }
+}
+
+.upcoming-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+        background: #f7f8fc;
+        border-bottom: 1.5px solid #eaeef6;
+    }
+
+    th {
+        padding: 10px 14px;
+        text-align: left;
+        font-family: 'Roboto', sans-serif;
+        font-size: 11.5px;
+        font-weight: 600;
+        color: #6b6b9a;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    td {
+        padding: 11px 14px;
+        text-align: left;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 13.5px;
+        color: #3a3a5c;
+        border-bottom: 1px solid #f0f2f8;
+        white-space: nowrap;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    tr:hover td {
+        background-color: #f5f6fb;
+    }
+
+    .phone-small {
+        display: block;
+        font-size: 11.5px;
+        color: #999;
+        margin-top: 2px;
+    }
+}
+
+// ============================================
+// LOADING STATES
+// ============================================
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 40px;
+    text-align: center;
+
+    p {
+        font-family: 'Open Sans', sans-serif;
+        color: #888;
+        font-size: 15px;
+        margin: 14px 0 0;
+    }
+}
+
+.loading-spinner {
+    width: 22px;
+    height: 22px;
+    border: 2.5px solid #e8eaf0;
+    border-top: 2.5px solid $primary-color;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+    flex-shrink: 0;
+
+    &.large {
+        width: 40px;
+        height: 40px;
+        border-width: 3px;
+    }
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
+@media screen and (max-width: 1024px) {
+    .middle-section {
+        grid-template-columns: 1fr;
+    }
+
+    .bottom-section {
+        grid-template-columns: 1fr;
+    }
+
+    .today-section {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid,
+    .revenue-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard-main {
+        padding: 16px 14px 32px;
+    }
+
+    .dashboard-header {
+        padding: 14px 16px;
+        flex-direction: column;
+        align-items: stretch;
+
+        .dashboard-title h1 {
+            font-size: 19px;
+        }
+
+        .refresh-btn {
+            justify-content: center;
+        }
+    }
+
+    .stats-grid,
+    .revenue-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-card,
+    .activity-card,
+    .today-card,
+    .upcoming-card {
+        padding: 16px;
+    }
+
+    .activity-items {
+        grid-template-columns: 1fr;
+    }
+
+    .upcoming-header,
+    .today-header {
+        flex-direction: column;
+        align-items: stretch;
+
+        .date-picker-wrap {
+            width: 100%;
+        }
+
+        .date-picker {
+            width: 100%;
+        }
+    }
+
+    .today-table {
+        font-size: 12px;
+
+        th,
+        td {
+            padding: 8px 10px;
+            font-size: 12px;
+        }
+    }
+
+    .upcoming-table {
+        font-size: 12px;
+
+        th,
+        td {
+            padding: 8px 10px;
+            font-size: 12px;
+        }
+    }
+}
+
+// ============================================
+// EXTRA SMALL SCREENS
+// ============================================
+@media screen and (max-width: 480px) {
+    .today-section {
+        grid-template-columns: 1fr;
+    }
+
+    .today-table {
+
+        th,
+        td {
+            padding: 6px 8px;
+            font-size: 11px;
+        }
+    }
+
+    .upcoming-table {
+
+        th,
+        td {
+            padding: 6px 8px;
+            font-size: 11px;
+        }
+    }
+
+    .stat-card {
+        padding: 14px 16px;
+
+        .stat-card-value {
+            font-size: 20px;
+        }
+
+        .stat-card-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            font-size: 16px;
+        }
+    }
+
+    .revenue-card .revenue-amount {
+        font-size: 18px;
+    }
+
+    .activity-item .activity-value {
+        font-size: 18px;
+    }
+}

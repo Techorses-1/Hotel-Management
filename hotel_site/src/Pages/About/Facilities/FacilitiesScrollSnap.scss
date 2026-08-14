@@ -1,0 +1,117 @@
+// FacilitiesScrollSnap.scss
+$primary-color: #3d52a0;
+$secondary-color: #7091e6;
+$slate-color: #8697c4;
+$lavender-gray: #adbbda;
+$light-bg: #ede8f5;
+$card-bg: #ffffff;
+
+$font-heading: "Montserrat", sans-serif;
+$font-body: "Nunito", sans-serif;
+
+.facilities-scroll-snap {
+    width: 100%;
+    overflow-x: hidden;
+
+    &__slide {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    &__slide-image-wrap {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+    }
+
+    &__slide-image {
+        position: absolute;
+        top: -8%;
+        left: 0;
+        width: 100%;
+        height: 116%; // extra height so parallax y-shift never reveals empty space
+        object-fit: cover;
+        will-change: transform;
+    }
+
+    &__slide-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top,
+                rgba(20, 20, 35, 0.8) 0%,
+                rgba(20, 20, 35, 0.25) 45%,
+                rgba(20, 20, 35, 0.15) 100%);
+    }
+
+    &__slide-text {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 40px 90px;
+        box-sizing: border-box;
+    }
+
+    &__slide-count {
+        display: inline-block;
+        font-family: $font-body;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 2px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 16px;
+    }
+
+    &__slide-name {
+        font-family: $font-heading;
+        font-weight: 800;
+        font-size: clamp(36px, 6vw, 64px);
+        line-height: 1.05;
+        color: #ffffff;
+        margin: 0 0 14px;
+    }
+
+    &__slide-tagline {
+        font-family: $font-body;
+        font-weight: 500;
+        font-size: clamp(15px, 1.6vw, 18px);
+        color: rgba(255, 255, 255, 0.85);
+        margin: 0;
+    }
+
+    // ---------- RESPONSIVE ----------
+    @media (max-width: 1024px) {
+        &__slide-text {
+            padding: 0 32px 70px;
+        }
+    }
+
+    @media (max-width: 640px) {
+        &__slide {
+            height: 100vh;
+        }
+
+        &__slide-text {
+            padding: 0 24px 60px;
+        }
+
+        &__slide-name {
+            font-size: 32px;
+        }
+
+        &__slide-tagline {
+            font-size: 14.5px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        &__slide-text {
+            padding: 0 18px 50px;
+        }
+    }
+}

@@ -1,0 +1,123 @@
+// RoomsHero.scss
+$primary-color: #3d52a0;
+$secondary-color: #7091e6;
+$slate-color: #8697c4;
+$lavender-gray: #adbbda;
+$light-bg: #ede8f5;
+$card-bg: #ffffff;
+
+$font-heading: "Montserrat", sans-serif;
+$font-body: "Nunito", sans-serif;
+
+.rooms-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #24243e;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -80px;
+
+    &__image-wrap {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg,
+                rgba(36, 36, 62, 0.65) 0%,
+                rgba(61, 82, 160, 0.55) 100%);
+    }
+
+    &__container {
+        position: relative;
+        z-index: 2;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 40px;
+        box-sizing: border-box;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        font-family: $font-body;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 16px;
+    }
+
+    &__title {
+        font-family: $font-heading;
+        font-weight: 800;
+        font-size: clamp(40px, 8vw, 64px);
+        line-height: 1.1;
+        letter-spacing: -1px;
+        color: #ffffff;
+        margin: 0 0 20px;
+    }
+
+    &__description {
+        font-family: $font-body;
+        font-weight: 500;
+        font-size: clamp(16px, 2.2vw, 20px);
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.85);
+        margin: 0;
+        max-width: 560px;
+    }
+
+    // ---------- RESPONSIVE ----------
+    @media (max-width: 1024px) {
+        height: 70vh;
+
+        &__container {
+            padding: 0 32px;
+        }
+    }
+
+    @media (max-width: 640px) {
+        height: 70vh;
+
+        &__container {
+            padding: 0 24px;
+        }
+
+        &__eyebrow {
+            font-size: 12px;
+        }
+
+        &__title {
+            font-size: clamp(32px, 8vw, 45px);
+            margin-bottom: 16px;
+        }
+
+        &__description {
+            font-size: 15px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        &__container {
+            padding: 0 18px;
+        }
+    }
+}

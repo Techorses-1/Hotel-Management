@@ -1,0 +1,204 @@
+// FacilitiesExpand.scss
+$primary-color: #3d52a0;
+$secondary-color: #7091e6;
+$slate-color: #8697c4;
+$lavender-gray: #adbbda;
+$light-bg: #ede8f5;
+$card-bg: #ffffff;
+
+$font-heading: "Montserrat", sans-serif;
+$font-body: "Nunito", sans-serif;
+
+.facilities-expand {
+  width: 100%;
+  background: #ffffff;
+  padding: 120px 0;
+  overflow-x: hidden;
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    box-sizing: border-box;
+  }
+
+  &__header {
+    max-width: 600px;
+    margin: 0 auto 60px;
+    text-align: center;
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    font-family: $font-body;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $secondary-color;
+    margin-bottom: 14px;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-weight: 800;
+    font-size: clamp(28px, 3.4vw, 40px);
+    color: #24243e;
+    margin: 0;
+  }
+
+  &__panels {
+    display: flex;
+    gap: 12px;
+    height: 480px;
+  }
+
+  &__panel {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__panel-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__panel-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(36, 36, 62, 0.85) 0%,
+      rgba(36, 36, 62, 0.35) 55%,
+      rgba(36, 36, 62, 0.15) 100%
+    );
+  }
+
+  &__panel-content {
+    position: relative;
+    z-index: 2;
+    padding: 26px 22px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  &__panel-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 14px;
+    backdrop-filter: blur(4px);
+  }
+
+  &__panel-name {
+    font-family: $font-heading;
+    font-weight: 700;
+    font-size: 17px;
+    color: #ffffff;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  &__panel--active &__panel-name {
+    font-size: 22px;
+    white-space: normal;
+  }
+
+  &__panel-desc {
+    font-family: $font-body;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 12px 0 0;
+    max-width: 320px;
+  }
+
+  // ---------- RESPONSIVE ----------
+  @media (max-width: 1024px) {
+    padding: 100px 0;
+
+    &__container {
+      padding: 0 32px;
+    }
+
+    &__panels {
+      height: 420px;
+    }
+  }
+
+  @media (max-width: 860px) {
+    &__panels {
+      flex-direction: column;
+      height: auto;
+      gap: 10px;
+    }
+
+    &__panel {
+      height: 70px;
+      flex: none !important; // disable flex-grow animation, use height toggle instead on mobile
+
+      &--active {
+        height: 320px;
+      }
+    }
+
+    &__panel-name {
+      white-space: normal !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    padding: 90px 0;
+
+    &__container {
+      padding: 0 24px;
+    }
+
+    &__header {
+      margin-bottom: 40px;
+    }
+
+    &__panel {
+      height: 64px;
+
+      &--active {
+        height: 280px;
+      }
+    }
+
+    &__panel-content {
+      padding: 20px 18px;
+    }
+
+    &__panel--active &__panel-name {
+      font-size: 19px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    &__container {
+      padding: 0 18px;
+    }
+  }
+}

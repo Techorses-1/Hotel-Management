@@ -1,0 +1,848 @@
+// ============================================
+// GOOGLE FONTS IMPORT
+// ============================================
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;900&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+// ============================================
+// VARIABLES
+// ============================================
+$primary-color: #3f3f91;
+$primary-light: #6a6ac5;
+$primary-dark: #2d2f87;
+$success-color: #28a745;
+$danger-color: #dc3545;
+$warning-color: #e67e22;
+$bg-color: #dfeafb;
+$white: #ffffff;
+$shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+$border-radius: 14px;
+$border-radius-sm: 8px;
+
+// ============================================
+// MAIN CONTAINER
+// ============================================
+.main {
+    background: $bg-color !important;
+    font-family: 'Open Sans', sans-serif !important;
+    min-height: 100vh;
+    padding: 24px 28px 40px;
+}
+
+// ============================================
+// PAGE HEADER
+// ============================================
+.page-header {
+    max-width: 1300px;
+    margin: 0 auto 22px;
+    padding: 18px 24px;
+    background: $white;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-wrap: wrap;
+    gap: 14px;
+
+    .right-section {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .search-container {
+        position: relative;
+        width: 280px;
+
+        input {
+            width: 100%;
+            padding: 9px 14px 9px 38px;
+            border: 1.5px solid #e3e8f0;
+            border-radius: 50px;
+            background: #f5f7fa;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            color: #333;
+            transition: all 0.25s;
+
+            &:focus {
+                outline: none;
+                border-color: $primary-light;
+                background: $white;
+                box-shadow: 0 0 0 3px rgba(106, 106, 197, 0.12);
+            }
+
+            &::placeholder {
+                color: #aab0bc;
+            }
+        }
+
+        .search-icon {
+            position: absolute;
+            top: 50%;
+            left: 13px;
+            transform: translateY(-50%);
+            color: #aab0bc;
+            font-size: 14px;
+            pointer-events: none;
+        }
+    }
+
+    .filters-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        select,
+        input[type="date"] {
+            padding: 9px 14px;
+            border: 1.5px solid #e3e8f0;
+            border-radius: 50px;
+            background: #f5f7fa;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 13.5px;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.25s;
+
+            &:focus {
+                outline: none;
+                border-color: $primary-light;
+                background: $white;
+                box-shadow: 0 0 0 3px rgba(106, 106, 197, 0.12);
+            }
+        }
+    }
+}
+
+// ============================================
+// STATS CARDS
+// ============================================
+.stats-grid {
+    max-width: 1300px;
+    margin: 0 auto 22px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.stat-card {
+    background: $white;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-left: 4px solid transparent;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.11);
+    }
+
+    .stat-icon {
+        width: 46px;
+        height: 46px;
+        min-width: 46px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+    }
+
+    .stat-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .stat-number {
+        font-family: 'Roboto', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: $primary-dark;
+    }
+
+    .stat-label {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 12.5px;
+        color: #888;
+    }
+
+    &.stat-pending {
+        border-left-color: $warning-color;
+
+        .stat-icon {
+            background: #fff3cd;
+            color: #856404;
+        }
+    }
+
+    &.stat-completed {
+        border-left-color: $success-color;
+
+        .stat-icon {
+            background: #d4edda;
+            color: #155724;
+        }
+    }
+
+    &.stat-cancelled {
+        border-left-color: $danger-color;
+
+        .stat-icon {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    }
+
+    &.stat-today {
+        border-left-color: $primary-color;
+
+        .stat-icon {
+            background: #edf0fc;
+            color: $primary-color;
+        }
+    }
+}
+
+// ============================================
+// DATA TABLE
+// ============================================
+.data-table {
+    max-width: 1300px;
+    margin: 0 auto 24px;
+    background: $white;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+    overflow: hidden;
+    overflow-x: auto;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+
+        thead {
+            background: #f7f8fc;
+            border-bottom: 1.5px solid #eaeef6;
+        }
+
+        th {
+            padding: 14px 20px;
+            text-align: left;
+            font-family: 'Roboto', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #6b6b9a;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 13px 20px;
+            text-align: left;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            color: #3a3a5c;
+            border-bottom: 1px solid #f0f2f8;
+            white-space: nowrap;
+        }
+
+        tr {
+            cursor: pointer;
+            transition: background-color 0.15s;
+
+            &:last-child td {
+                border-bottom: none;
+            }
+
+            &:hover td {
+                background-color: #f5f6fb;
+            }
+
+            &.selected td {
+                background-color: #edf0fc;
+                color: $primary-dark;
+            }
+        }
+    }
+}
+
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    .empty-icon {
+        font-size: 40px;
+        color: #c5cbdf;
+        margin-bottom: 6px;
+    }
+
+    p {
+        font-family: 'Open Sans', sans-serif;
+        color: #888;
+        font-size: 15px;
+        margin: 0;
+    }
+
+    small {
+        color: #aab0bc;
+        font-size: 12.5px;
+    }
+}
+
+// ============================================
+// ACTION BUTTONS (in table row)
+// ============================================
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .action-btn {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        transition: all 0.2s;
+
+        &.complete-btn {
+            background: #d4edda;
+            color: #155724;
+
+            &:hover {
+                background: $success-color;
+                color: $white;
+            }
+        }
+
+        // ✅ NEW: REVERT BUTTON
+        &.revert-btn {
+            background: #fff3cd;
+            color: #856404;
+
+            &:hover {
+                background: #f0b400;
+                color: $white;
+            }
+        }
+
+        // ❌ REMOVED: cancel-btn and delete-btn (not needed)
+        // &.cancel-btn { ... }
+        // &.delete-btn { ... }
+
+        &.view-btn {
+            background: #edf0fc;
+            color: $primary-color;
+
+            &:hover {
+                background: $primary-color;
+                color: $white;
+            }
+        }
+    }
+}
+
+// ============================================
+// STATUS BADGES
+// ============================================
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    &.status-pending {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    &.status-completed {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    &.status-cancelled {
+        background: #f8d7da;
+        color: #721c24;
+    }
+}
+
+// ============================================
+// LOADING STATES
+// ============================================
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 40px;
+    text-align: center;
+
+    p {
+        font-family: 'Open Sans', sans-serif;
+        color: #888;
+        font-size: 15px;
+        margin: 14px 0 0;
+    }
+}
+
+.loading-spinner {
+    width: 22px;
+    height: 22px;
+    border: 2.5px solid #e8eaf0;
+    border-top: 2.5px solid $primary-color;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+    flex-shrink: 0;
+
+    &.large {
+        width: 40px;
+        height: 40px;
+        border-width: 3px;
+    }
+
+    &.small {
+        width: 16px;
+        height: 16px;
+        border-width: 2px;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+// ============================================
+// MODAL STYLES
+// ============================================
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(30, 30, 60, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-out;
+    padding: 20px;
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+}
+
+.modal-content {
+    background: $white;
+    border-radius: $border-radius;
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px rgba(30, 30, 60, 0.18);
+    animation: slideUp 0.25s ease-out;
+
+    @keyframes slideUp {
+        from {
+            transform: translateY(16px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 22px;
+    border-bottom: 1px solid #eaeef6;
+    position: sticky;
+    top: 0;
+    background: $white;
+    z-index: 10;
+    border-radius: $border-radius $border-radius 0 0;
+}
+
+.modal-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: $primary-dark;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-close {
+    background: #f5f6fa;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 15px;
+    cursor: pointer;
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    padding: 0;
+
+    &:hover {
+        background: #ede8fa;
+        color: $primary-color;
+    }
+}
+
+.modal-body {
+    padding: 22px;
+}
+
+.wo-details-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f0f2f8;
+
+    &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+}
+
+.edit-textarea {
+    width: 100%;
+    padding: 9px 13px;
+    border: 1.5px solid #e3e8f0;
+    border-radius: $border-radius-sm;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #333;
+    background: #fafbfc;
+    box-sizing: border-box;
+    min-height: 70px;
+    resize: vertical;
+    transition: border 0.25s, box-shadow 0.25s;
+
+    &:focus {
+        border-color: $primary-light;
+        outline: none;
+        background: $white;
+        box-shadow: 0 0 0 3px rgba(106, 106, 197, 0.12);
+    }
+}
+
+.detail-label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    color: #888;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-value {
+    font-family: 'Open Sans', sans-serif;
+    color: #2d2d50;
+    font-size: 14.5px;
+    word-break: break-word;
+}
+
+.note-hint {
+    padding: 10px 14px;
+    background: #f5f7fc;
+    border-radius: $border-radius-sm;
+    font-family: 'Open Sans', sans-serif;
+    color: #555;
+    font-size: 13px;
+
+    strong {
+        color: $primary-color;
+    }
+}
+
+// ============================================
+// MODAL FOOTER
+// ============================================
+.modal-footer {
+    padding: 16px 22px;
+    border-top: 1px solid #eaeef6;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: sticky;
+    bottom: 0;
+    background: $white;
+    z-index: 10;
+    border-radius: 0 0 $border-radius $border-radius;
+
+    button {
+        color: $white;
+        border: none;
+        padding: 10px 22px;
+        border-radius: 50px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 600;
+        font-size: 13.5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        transition: all 0.2s;
+        justify-content: center;
+
+        &:hover {
+            opacity: 0.92;
+            transform: translateY(-1px);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+
+        &:disabled {
+            background: #b8b8cc !important;
+            cursor: not-allowed;
+            transform: none;
+        }
+    }
+
+    .update-btn {
+        background: $primary-color;
+        box-shadow: 0 3px 8px rgba(63, 63, 145, 0.25);
+    }
+
+    // ✅ NEW: REVERT BUTTON IN MODAL
+    .revert-btn {
+        background: $warning-color;
+        color: $white;
+        box-shadow: 0 3px 8px rgba(230, 126, 34, 0.25);
+
+        &:hover {
+            background: #d35400;
+            transform: translateY(-1px);
+        }
+    }
+
+    // ❌ REMOVED: delete-btn (not needed)
+    // .delete-btn { ... }
+
+    .cancel-btn {
+        background: transparent;
+        color: #666;
+        border: 1.5px solid #dde1ed;
+        box-shadow: none;
+
+        &:hover {
+            background: #f5f6fb;
+            border-color: #c8cde0;
+        }
+    }
+}
+
+// ============================================
+// CONFIRM DIALOG
+// ============================================
+.confirm-dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(30, 30, 60, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1100;
+}
+
+.confirm-dialog {
+    background: $white;
+    border-radius: $border-radius;
+    padding: 26px;
+    max-width: 380px;
+    width: 90%;
+    box-shadow: 0 8px 32px rgba(30, 30, 60, 0.2);
+    text-align: center;
+
+    h3 {
+        font-family: 'Roboto', sans-serif;
+        margin: 0 0 12px;
+        color: $warning-color;
+        font-size: 17px;
+    }
+
+    p {
+        font-family: 'Open Sans', sans-serif;
+        margin-bottom: 22px;
+        line-height: 1.6;
+        color: #555;
+        font-size: 14px;
+    }
+
+    .confirm-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+
+        button {
+            padding: 9px 24px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .confirm-cancel {
+            background: #f0f2f8;
+            color: #555;
+            border: 1.5px solid #dde1ed;
+
+            &:hover {
+                background: #e5e8f0;
+            }
+        }
+
+        // ✅ NEW: REVERT CONFIRM BUTTON
+        .confirm-revert {
+            background: $warning-color;
+            color: $white;
+            box-shadow: 0 3px 8px rgba(230, 126, 34, 0.25);
+
+            &:hover {
+                background: #d35400;
+                transform: translateY(-1px);
+            }
+        }
+
+        // ❌ REMOVED: confirm-delete (not needed)
+        // .confirm-delete { ... }
+    }
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
+@media screen and (max-width: 768px) {
+    .main {
+        padding: 16px 14px 32px;
+    }
+
+    .page-header {
+        padding: 14px 16px;
+        gap: 12px;
+
+        .right-section {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+        }
+
+        .search-container {
+            width: 100%;
+        }
+
+        .filters-group {
+            width: 100%;
+            flex-direction: column;
+
+            select,
+            input[type="date"] {
+                width: 100%;
+            }
+        }
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .data-table {
+        table {
+
+            th,
+            td {
+                padding: 11px 14px;
+                font-size: 13px;
+            }
+        }
+    }
+
+    .modal-content {
+        width: 100%;
+        max-height: 88vh;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .modal-overlay {
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .modal-footer {
+        button {
+            flex: 1;
+            min-width: calc(50% - 5px);
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}

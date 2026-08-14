@@ -1,0 +1,165 @@
+// HomeCta.scss
+$primary-color: #3d52a0;
+$secondary-color: #7091e6;
+$slate-color: #8697c4;
+$lavender-gray: #adbbda;
+$light-bg: #ede8f5;
+$card-bg: #ffffff;
+
+$font-heading: "Montserrat", sans-serif;
+$font-body: "Nunito", sans-serif;
+
+.home-cta {
+    position: relative;
+    width: 100%;
+    background: $primary-color;
+    padding: 130px 0;
+    overflow: hidden; // keeps floating shapes from ever causing page-wide scroll
+
+    &__container {
+        position: relative;
+        z-index: 2;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 40px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    &__title {
+        font-family: $font-heading;
+        font-weight: 800;
+        font-size: clamp(32px, 5vw, 56px);
+        line-height: 1.15;
+        color: #ffffff;
+        margin: 0 0 20px;
+        max-width: 760px;
+    }
+
+    &__subtext {
+        font-family: $font-body;
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.85);
+        margin: 0 0 40px;
+        max-width: 480px;
+    }
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: $font-body;
+        font-weight: 700;
+        font-size: 16px;
+        color: $primary-color;
+        background: #ffffff;
+        padding: 17px 40px;
+        border: none;
+        border-radius: 32px;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+        }
+
+        svg {
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        &:hover svg {
+            transform: translateX(4px);
+        }
+    }
+
+    // ---------- DECORATIVE FLOATING SHAPES ----------
+    &__shape {
+        position: absolute;
+        border-radius: 50%;
+        z-index: 1;
+        pointer-events: none;
+
+        &--one {
+            width: 340px;
+            height: 340px;
+            background: rgba(255, 255, 255, 0.06);
+            top: -100px;
+            left: -80px;
+        }
+
+        &--two {
+            width: 260px;
+            height: 260px;
+            background: rgba(255, 255, 255, 0.05);
+            bottom: -90px;
+            right: -60px;
+        }
+    }
+
+    // ---------- RESPONSIVE ----------
+    @media (max-width: 1024px) {
+        padding: 110px 0;
+
+        &__container {
+            padding: 0 32px;
+        }
+
+        &__shape--one {
+            width: 260px;
+            height: 260px;
+        }
+
+        &__shape--two {
+            width: 200px;
+            height: 200px;
+        }
+    }
+
+    @media (max-width: 640px) {
+        padding: 90px 0;
+
+        &__container {
+            padding: 0 24px;
+        }
+
+        &__title {
+            font-size: 30px;
+        }
+
+        &__subtext {
+            font-size: 15px;
+            margin-bottom: 32px;
+        }
+
+        &__btn {
+            padding: 15px 32px;
+            font-size: 14.5px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        &__shape--one {
+            width: 180px;
+            height: 180px;
+        }
+
+        &__shape--two {
+            width: 140px;
+            height: 140px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        &__container {
+            padding: 0 18px;
+        }
+    }
+}

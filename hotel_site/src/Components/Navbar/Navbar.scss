@@ -1,0 +1,259 @@
+// Navbar.scss
+$primary-color: #3d52a0;
+$secondary-color: #7091e6;
+$slate-color: #8697c4;
+$card-bg: #ffffff;
+$light-bg: #ede8f5;
+
+$font-heading: "Montserrat", sans-serif;
+$font-body: "Nunito", sans-serif;
+
+.navbar {
+    position: relative;
+    width: 100%;
+    z-index: 1000;
+    padding: 17px 0 22px;
+
+    background: transparent;
+    transition: all 0.4s ease;
+
+
+    @media (max-width: 640px) {
+        padding: 21px 0;
+    }
+
+    // ---------- DEFAULT (HOME) — DARK TEXT ----------
+    .navbar__logo-text {
+        color: #24243e;
+        transition: color 0.3s ease;
+    }
+
+    .navbar__logo-accent {
+        color: $secondary-color;
+        transition: color 0.3s ease;
+    }
+
+    .navbar__link {
+        color: #4a4a4a;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: $primary-color;
+        }
+
+        &--active {
+            color: $primary-color;
+        }
+    }
+
+    .navbar__hamburger {
+        color: #4a4a4a;
+        transition: color 0.3s ease;
+    }
+
+    // ---------- LIGHT MODIFIER (ALL OTHER PAGES) — WHITE TEXT ----------
+    // Applied because those pages open with a dark image hero right at the
+    // top, and the transparent navbar sits on top of it (About/Contact/
+    // Rooms/Gallery all use this pattern) — Home's hero is a light
+    // background at the top, so it keeps dark text by default above.
+    &--light {
+        .navbar__logo-text {
+            color: #ffffff;
+        }
+
+        .navbar__logo-accent {
+            color: #ffffff;
+            opacity: 0.85;
+        }
+
+        .navbar__link {
+            color: rgba(255, 255, 255, 0.85);
+
+            &:hover {
+                color: #ffffff;
+            }
+
+            &--active {
+                color: #ffffff;
+            }
+        }
+
+        .navbar__underline {
+            background: #ffffff;
+        }
+
+        .navbar__hamburger {
+            color: #ffffff;
+        }
+    }
+
+    &__container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo-text {
+        font-family: $font-heading;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+
+    &__links {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+
+        @media (max-width: 1024px) {
+            display: none;
+        }
+    }
+
+    &__link {
+        position: relative;
+        font-family: $font-body;
+        font-weight: 600;
+        font-size: 15px;
+        text-decoration: none;
+        padding-bottom: 6px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__underline {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        border-radius: 2px;
+        background: $secondary-color;
+        transition: background 0.3s ease;
+    }
+
+    &__cta {
+        font-family: $font-body;
+        font-weight: 700;
+        font-size: 14px;
+        padding: 12px 26px;
+        border-radius: 30px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        background: $primary-color;
+        color: #ffffff;
+        border: none;
+
+        &:hover {
+            background: $secondary-color;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1024px) {
+            display: none;
+        }
+    }
+
+    &__hamburger {
+        position: relative;
+        z-index: 1001; // ✅ fix — sits above mobile-menu (999) and overlay (998), so it's always clickable/visible to close
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        align-items: center;
+        justify-content: center;
+
+        @media (max-width: 1024px) {
+            display: flex;
+        }
+
+        .navbar--menu-open & {
+            color: #4a4a4a !important;
+        }
+    }
+
+    &__overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(61, 82, 160, 0.35);
+        backdrop-filter: blur(4px);
+        z-index: 998;
+    }
+
+    &__mobile-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 78%;
+        max-width: 360px;
+        background: #ffffff;
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        padding: 60px 45px;
+        box-shadow: -10px 0 40px rgba(61, 82, 160, 0.15);
+
+        @media (max-width: 480px) {
+            width: 82%;
+            padding: 50px 32px;
+        }
+    }
+
+    &__mobile-links {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        margin-bottom: 40px;
+        margin-top: 40px;
+    }
+
+    &__mobile-link {
+        font-family: $font-heading;
+        font-size: 26px;
+        font-weight: 600;
+        color: #2b2b2b;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &--active {
+            color: $primary-color;
+        }
+
+        &:hover {
+            color: $secondary-color;
+        }
+    }
+
+    &__mobile-cta {
+        display: inline-block;
+        font-family: $font-body;
+        font-weight: 700;
+        font-size: 15px;
+        color: #ffffff;
+        background: $primary-color;
+        padding: 14px 30px;
+        border-radius: 30px;
+        text-decoration: none;
+        text-align: center;
+        transition: background 0.3s ease;
+
+        &:hover {
+            background: $secondary-color;
+        }
+    }
+}

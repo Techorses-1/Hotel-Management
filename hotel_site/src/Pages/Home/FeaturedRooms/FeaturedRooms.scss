@@ -1,0 +1,317 @@
+// FeaturedRooms.scss - UPDATED (equal height cards in mobile/tablet slider)
+$primary-color: #3d52a0;
+$secondary-color: #7091e6;
+$slate-color: #8697c4;
+$lavender-gray: #adbbda;
+$light-bg: #ede8f5;
+$card-bg: #ffffff;
+
+$font-heading: "Montserrat", sans-serif;
+$font-body: "Nunito", sans-serif;
+
+.featured-rooms {
+    width: 100%;
+    background: $light-bg;
+    padding: 60px 0;
+
+    &__container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 40px;
+        box-sizing: border-box;
+    }
+
+    &__header {
+        max-width: 600px;
+        margin: 0 auto 60px;
+        text-align: center;
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        font-family: $font-body;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $secondary-color;
+        margin-bottom: 14px;
+    }
+
+    &__title {
+        font-family: $font-heading;
+        font-weight: 800;
+        font-size: clamp(30px, 3.6vw, 42px);
+        color: #24243e;
+        margin: 0 0 16px;
+    }
+
+    &__subtext {
+        font-family: $font-body;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 1.7;
+        color: #55556a;
+        margin: 0;
+    }
+
+    // ---------- DESKTOP GRID (unchanged — already fine) ----------
+    &__grid--desktop {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+    }
+
+    // ---------- TABLET/MOBILE SLIDER (hidden on desktop) ----------
+    &__slider {
+        display: none;
+    }
+
+    &__swiper {
+        padding: 10px 0 20px;
+    }
+
+    // NEW — makes every swiper slide stretch to the tallest one in the row,
+    // and turns the slide into a flex container so the card inside can
+    // fill that stretched height (fixes uneven card heights on mobile)
+    .swiper-slide {
+        height: auto;
+        display: flex;
+    }
+
+    &__slider-arrows {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    &__card {
+        background: $card-bg;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(61, 82, 160, 0.1);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+        width: 100%;
+        height: 100%; // NEW — fill the stretched swiper-slide height
+
+        &:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 22px 50px rgba(61, 82, 160, 0.18);
+
+            .featured-rooms__image {
+                transform: scale(1.08);
+            }
+        }
+    }
+
+    &__image-wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+    }
+
+    &__price {
+        position: absolute;
+        bottom: 14px;
+        left: 14px;
+        background: rgba(255, 255, 255, 0.95);
+        color: $primary-color;
+        font-family: $font-heading;
+        font-weight: 700;
+        font-size: 15px;
+        padding: 7px 14px;
+        border-radius: 30px;
+
+        span {
+            font-family: $font-body;
+            font-weight: 500;
+            font-size: 11px;
+            color: $slate-color;
+            margin-left: 2px;
+        }
+    }
+
+    &__content {
+        padding: 22px 22px 26px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    &__name {
+        font-family: $font-heading;
+        font-weight: 700;
+        font-size: 19px;
+        color: #24243e;
+        margin: 0 0 6px;
+    }
+
+    &__tagline {
+        font-family: $font-body;
+        font-weight: 500;
+        font-size: 13.5px;
+        color: $slate-color;
+        margin: 0 0 16px;
+        line-height: 1.5;
+    }
+
+    &__amenities {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        margin-top: auto; // NEW — pins amenities to card bottom regardless of tagline wrap above
+        margin-bottom: 0; // was 20px — margin-top: auto now handles the spacing
+    }
+
+    &__amenity {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-family: $font-body;
+        font-weight: 600;
+        font-size: 12px;
+        color: $primary-color;
+        background: $light-bg;
+        padding: 6px 10px;
+        border-radius: 20px;
+
+        svg {
+            font-size: 12px;
+        }
+    }
+
+    // ---------- SWIPER NAVIGATION ARROWS ----------
+    &__swiper-prev,
+    &__swiper-next {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #ffffff;
+        border: 1px solid rgba(61, 82, 160, 0.15);
+        color: $primary-color;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(61, 82, 160, 0.1);
+
+        &:hover {
+            background: $primary-color;
+            color: #ffffff;
+            border-color: $primary-color;
+        }
+
+        svg {
+            font-size: 16px;
+        }
+    }
+
+    // ---------- FOOTER - VIEW ALL BUTTON CENTER ----------
+    &__footer {
+        display: flex;
+        justify-content: center;
+        margin-top: 55px;
+    }
+
+    &__view-all {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: $font-body;
+        font-weight: 700;
+        font-size: 15px;
+        color: $primary-color;
+        background: transparent;
+        border: 2px solid $primary-color;
+        padding: 13px 30px;
+        border-radius: 30px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: $primary-color;
+            color: #ffffff;
+        }
+    }
+
+    // ---------- RESPONSIVE ----------
+    @media (max-width: 1180px) {
+        &__grid--desktop {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (max-width: 1024px) {
+        padding: 50px 0;
+
+        &__container {
+            padding: 0 32px;
+        }
+    }
+
+    @media (max-width: 860px) {
+
+        // Hide desktop grid
+        &__grid--desktop {
+            display: none;
+        }
+
+        // Show slider
+        &__slider {
+            display: block;
+        }
+    }
+
+    @media (max-width: 640px) {
+        padding: 40px 0;
+
+        &__container {
+            padding: 0 24px;
+        }
+
+        &__header {
+            margin-bottom: 45px;
+        }
+
+        &__swiper-prev,
+        &__swiper-next {
+            width: 36px;
+            height: 36px;
+
+            svg {
+                font-size: 14px;
+            }
+        }
+    }
+
+    @media (max-width: 400px) {
+        &__container {
+            padding: 0 18px;
+        }
+
+        &__swiper-prev,
+        &__swiper-next {
+            width: 32px;
+            height: 32px;
+
+            svg {
+                font-size: 12px;
+            }
+        }
+    }
+}

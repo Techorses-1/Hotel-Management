@@ -1,0 +1,212 @@
+// RoomsInfo.scss - UPDATED with correct padding logic
+$primary-color: #3d52a0;
+$secondary-color: #7091e6;
+$slate-color: #8697c4;
+$lavender-gray: #adbbda;
+$light-bg: #ede8f5;
+$card-bg: #ffffff;
+
+$font-heading: "Montserrat", sans-serif;
+$font-body: "Nunito", sans-serif;
+
+.rooms-info {
+    width: 100%;
+    background: #ffffff;
+    padding: 60px 0; // Desktop: 60px top & bottom
+    overflow-x: hidden;
+
+    &__container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 40px;
+        box-sizing: border-box;
+    }
+
+    &__header {
+        max-width: 600px;
+        margin: 0 auto 70px;
+        text-align: center;
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        font-family: $font-body;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $secondary-color;
+        margin-bottom: 14px;
+    }
+
+    &__title {
+        font-family: $font-heading;
+        font-weight: 800;
+        font-size: clamp(28px, 3.4vw, 40px);
+        color: #24243e;
+        margin: 0;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    &__block {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 24px;
+    }
+
+    &__divider {
+        position: absolute;
+        top: 10px;
+        right: 0;
+        bottom: 10px;
+        width: 1px;
+        background: rgba(61, 82, 160, 0.15);
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background: $light-bg;
+        color: $primary-color;
+        font-size: 22px;
+        margin-bottom: 22px;
+    }
+
+    &__number {
+        font-family: $font-heading;
+        font-weight: 800;
+        font-size: clamp(48px, 6vw, 72px);
+        line-height: 1;
+        color: $primary-color;
+        margin-bottom: 14px;
+    }
+
+    &__name {
+        font-family: $font-heading;
+        font-weight: 700;
+        font-size: 17px;
+        color: #24243e;
+        margin: 0 0 8px;
+    }
+
+    &__price {
+        font-family: $font-body;
+        font-weight: 600;
+        font-size: 13.5px;
+        color: $slate-color;
+        margin: 0;
+    }
+
+    // ---------- RESPONSIVE ----------
+    @media (max-width: 1024px) {
+        padding: 50px 0; // Tablet: 50px top & bottom
+
+        &__container {
+            padding: 0 32px;
+        }
+
+        &__header {
+            margin-bottom: 55px;
+        }
+    }
+
+    @media (max-width: 860px) {
+        &__grid {
+            grid-template-columns: repeat(2, 1fr);
+            row-gap: 50px;
+        }
+
+        &__divider {
+            display: none;
+        }
+
+        &__block {
+            padding: 0 16px;
+        }
+
+        // Add horizontal divider between rows
+        &__block:nth-child(1)::after,
+        &__block:nth-child(2)::after {
+            content: "";
+            position: absolute;
+            bottom: -25px;
+            left: 20%;
+            right: 20%;
+            height: 1px;
+            background: rgba(61, 82, 160, 0.15);
+        }
+    }
+
+    @media (max-width: 640px) {
+        padding: 40px 0; // Mobile: 40px top & bottom
+
+        &__container {
+            padding: 0 24px;
+        }
+
+        &__header {
+            margin-bottom: 45px;
+        }
+
+        &__title {
+            font-size: 26px; // Mobile heading: 26px
+        }
+
+        &__icon {
+            width: 50px;
+            height: 50px;
+            font-size: 19px;
+            margin-bottom: 18px;
+        }
+
+        &__number {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        &__name {
+            font-size: 15.5px;
+        }
+
+        &__price {
+            font-size: 12.5px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        &__container {
+            padding: 0 18px;
+        }
+
+        &__grid {
+            grid-template-columns: 1fr;
+            row-gap: 40px;
+        }
+
+        &__block:nth-child(1)::after,
+        &__block:nth-child(2)::after {
+            display: none;
+        }
+
+        &__block:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 30%;
+            right: 30%;
+            height: 1px;
+            background: rgba(61, 82, 160, 0.15);
+        }
+    }
+}

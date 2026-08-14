@@ -1,0 +1,218 @@
+// ContactCta.scss - UPDATED with correct padding
+$primary-color: #3d52a0;
+$secondary-color: #7091e6;
+$slate-color: #8697c4;
+$lavender-gray: #adbbda;
+$light-bg: #ede8f5;
+$card-bg: #ffffff;
+
+$font-heading: "Montserrat", sans-serif;
+$font-body: "Nunito", sans-serif;
+
+.contact-cta {
+  position: relative;
+  width: 100%;
+  background: $primary-color;
+  padding: 60px 0; // Desktop: 60px top & bottom
+  overflow: hidden;
+
+  &__container {
+    position: relative;
+    z-index: 2;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    font-family: $font-body;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-weight: 800;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.15;
+    color: #ffffff;
+    margin: 0 0 20px;
+    max-width: 700px;
+  }
+
+  &__subtext {
+    font-family: $font-body;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 44px;
+    max-width: 480px;
+  }
+
+  &__btn-group {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: $font-body;
+    font-weight: 700;
+    font-size: 15.5px;
+    padding: 16px 36px;
+    border-radius: 32px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+
+    svg {
+      font-size: 14px;
+      transition: transform 0.3s ease;
+    }
+
+    &--primary {
+      color: $primary-color;
+      background: #ffffff;
+      border: none;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+      }
+
+      &:hover svg {
+        transform: translateX(4px);
+      }
+    }
+
+    &--secondary {
+      color: #ffffff;
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: #ffffff;
+        transform: translateY(-4px);
+      }
+    }
+  }
+
+  &__shape {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+
+    &--one {
+      width: 340px;
+      height: 340px;
+      background: rgba(255, 255, 255, 0.06);
+      top: -100px;
+      left: -80px;
+    }
+
+    &--two {
+      width: 260px;
+      height: 260px;
+      background: rgba(255, 255, 255, 0.05);
+      bottom: -90px;
+      right: -60px;
+    }
+  }
+
+  // ---------- RESPONSIVE ----------
+  @media (max-width: 1024px) {
+    padding: 50px 0; // Tablet: 50px top & bottom
+
+    &__container {
+      padding: 0 32px;
+    }
+
+    &__shape--one {
+      width: 260px;
+      height: 260px;
+    }
+
+    &__shape--two {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    padding: 40px 0; // Mobile: 40px top & bottom
+
+    &__container {
+      padding: 0 24px;
+    }
+
+    &__eyebrow {
+      font-size: 12px;
+    }
+
+    &__title {
+      font-size: 26px; // Mobile heading: 26px
+    }
+
+    &__subtext {
+      font-size: 15px;
+      margin-bottom: 34px;
+    }
+
+    &__btn-group {
+      flex-direction: column;
+      width: 100%;
+      gap: 14px;
+    }
+
+    &__btn {
+      width: 100%;
+      justify-content: center;
+      padding: 15px 28px;
+      font-size: 14.5px;
+    }
+
+    &__shape--one {
+      width: 180px;
+      height: 180px;
+    }
+
+    &__shape--two {
+      width: 140px;
+      height: 140px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    &__container {
+      padding: 0 18px;
+    }
+
+    &__shape--one {
+      width: 140px;
+      height: 140px;
+    }
+
+    &__shape--two {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}

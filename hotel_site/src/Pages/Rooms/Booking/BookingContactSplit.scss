@@ -1,0 +1,201 @@
+// BookingContactSplit.scss - UPDATED with Book Now styles
+$primary-color: #3d52a0;
+$secondary-color: #7091e6;
+$slate-color: #8697c4;
+$lavender-gray: #adbbda;
+$light-bg: #ede8f5;
+$card-bg: #ffffff;
+$whatsapp-green: #25d366;
+$whatsapp-dark: #128c3e;
+
+$font-heading: "Montserrat", sans-serif;
+$font-body: "Nunito", sans-serif;
+
+.booking-contact-split {
+    position: relative;
+    width: 100%;
+    display: flex;
+    min-height: 480px;
+    overflow: hidden;
+
+    &__half {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 70px 50px;
+        box-sizing: border-box;
+
+        &--call {
+            background: $primary-color;
+        }
+
+        &--book {
+            background: $card-bg;
+        }
+    }
+
+    &__content {
+        max-width: 400px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__icon-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        margin-bottom: 26px;
+
+        &--book {
+            background: rgba(61, 82, 160, 0.12);
+            color: $primary-color;
+        }
+    }
+
+    &__half--call &__icon-wrap {
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    &__icon {
+        font-size: 28px;
+    }
+
+    &__half--call &__icon {
+        color: #ffffff;
+    }
+
+    &__half--book &__icon-wrap svg {
+        stroke: $primary-color;
+    }
+
+    &__title {
+        font-family: $font-heading;
+        font-weight: 800;
+        font-size: clamp(24px, 2.6vw, 30px);
+        margin: 0 0 14px;
+
+        &--book {
+            color: #24243e;
+        }
+    }
+
+    &__half--call &__title {
+        color: #ffffff;
+    }
+
+    &__desc {
+        font-family: $font-body;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 1.75;
+        margin: 0 0 30px;
+
+        &--book {
+            color: #55556a;
+        }
+    }
+
+    &__half--call &__desc {
+        color: rgba(255, 255, 255, 0.85);
+    }
+
+    &__btn {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: $font-body;
+        font-weight: 700;
+        font-size: 15px;
+        text-decoration: none;
+        padding: 15px 32px;
+        border-radius: 30px;
+        transition: transform 0.3s ease, background 0.3s ease;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            transform: translateY(-3px);
+        }
+
+        &--book {
+            background: $primary-color;
+            color: #ffffff;
+
+            &:hover {
+                background: $secondary-color;
+            }
+
+            svg {
+                transition: transform 0.3s ease;
+            }
+
+            &:hover svg {
+                transform: translateX(4px);
+            }
+        }
+    }
+
+    &__half--call &__btn {
+        background: #ffffff;
+        color: $primary-color;
+    }
+
+    // ---------- RESPONSIVE ----------
+    @media (max-width: 1024px) {
+        &__half {
+            padding: 50px 36px;
+        }
+    }
+
+    @media (max-width: 860px) {
+        flex-direction: column;
+        min-height: unset;
+
+        &__half {
+            width: 100%;
+            padding: 50px 32px;
+        }
+    }
+
+    @media (max-width: 640px) {
+        &__half {
+            padding: 40px 24px;
+        }
+
+        &__icon-wrap {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+
+        &__icon {
+            font-size: 24px;
+        }
+
+        &__title {
+            font-size: 22px;
+        }
+
+        &__desc {
+            font-size: 14px;
+        }
+
+        &__btn {
+            padding: 13px 26px;
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        &__half {
+            padding: 30px 18px;
+        }
+    }
+}

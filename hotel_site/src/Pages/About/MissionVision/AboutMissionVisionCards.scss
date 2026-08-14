@@ -1,0 +1,168 @@
+// AboutMissionVisionCards.scss - UPDATED with correct padding
+$primary-color: #3d52a0;
+$secondary-color: #7091e6;
+$slate-color: #8697c4;
+$lavender-gray: #adbbda;
+$light-bg: #ede8f5;
+$card-bg: #ffffff;
+
+$font-heading: "Montserrat", sans-serif;
+$font-body: "Nunito", sans-serif;
+
+.about-mv-cards {
+  width: 100%;
+  background: $light-bg;
+  padding: 60px 0; // Desktop: 60px top & bottom
+  overflow-x: hidden;
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    box-sizing: border-box;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+
+  &__card {
+    padding: 56px 46px;
+    border-radius: 24px;
+    box-sizing: border-box;
+
+    &--light {
+      background: $card-bg;
+    }
+
+    &--dark {
+      background: $primary-color;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    font-size: 24px;
+    margin-bottom: 26px;
+
+    &--light {
+      background: $light-bg;
+      color: $primary-color;
+    }
+
+    &--dark {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-weight: 800;
+    font-size: 26px;
+    margin: 0 0 18px;
+
+    &--dark {
+      color: #24243e;
+    }
+
+    &--light {
+      color: #ffffff;
+    }
+  }
+
+  &__desc {
+    font-family: $font-body;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 0;
+
+    &--dark {
+      color: #55556a;
+    }
+
+    &--light {
+      color: rgba(255, 255, 255, 0.85);
+    }
+  }
+
+  // ---------- RESPONSIVE ----------
+  @media (max-width: 1024px) {
+    padding: 50px 0; // Tablet: 50px top & bottom
+
+    &__container {
+      padding: 0 32px;
+    }
+
+    &__card {
+      padding: 46px 38px;
+    }
+  }
+
+  @media (max-width: 860px) {
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: 26px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    padding: 40px 0; // Mobile: 40px top & bottom
+
+    &__container {
+      padding: 0 24px;
+    }
+
+    &__card {
+      padding: 38px 28px;
+    }
+
+    &__icon {
+      width: 54px;
+      height: 54px;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    &__title {
+      font-size: 22px;
+    }
+
+    &__desc {
+      font-size: 15px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    &__container {
+      padding: 0 18px;
+    }
+
+    &__card {
+      padding: 30px 22px;
+    }
+
+    &__icon {
+      width: 48px;
+      height: 48px;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    &__title {
+      font-size: 20px;
+    }
+
+    &__desc {
+      font-size: 14px;
+    }
+  }
+}

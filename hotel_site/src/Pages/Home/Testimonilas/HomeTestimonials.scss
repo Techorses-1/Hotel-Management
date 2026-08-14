@@ -1,0 +1,169 @@
+// HomeTestimonials.scss
+$primary-color: #3d52a0;
+$secondary-color: #7091e6;
+$slate-color: #8697c4;
+$lavender-gray: #adbbda;
+$light-bg: #ede8f5;
+$card-bg: #ffffff;
+
+$font-heading: "Montserrat", sans-serif;
+$font-body: "Nunito", sans-serif;
+
+.home-testimonials {
+    width: 100%;
+    background: #ffffff;
+    padding: 60px 0;
+    overflow-x: hidden; // hard safety net
+
+    &__container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 40px !important; // ✅ same pattern as every other component now
+        box-sizing: border-box;
+    }
+
+    &__header {
+        max-width: 600px;
+        margin: 0 auto 60px;
+        text-align: center;
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        font-family: $font-body;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $secondary-color;
+        margin-bottom: 14px;
+    }
+
+    &__title {
+        font-family: $font-heading;
+        font-weight: 800;
+        font-size: clamp(28px, 3.4vw, 40px);
+        color: #24243e;
+        margin: 0;
+    }
+
+    // ---------- MARQUEE ----------
+    &__marquee {
+        width: 100%;
+        overflow: hidden;
+
+        // ✅ Fade effect — cards fade out near left/right edges instead of cutting off sharply
+        mask-image: linear-gradient(to right,
+                transparent 0%,
+                black 8%,
+                black 92%,
+                transparent 100%);
+        -webkit-mask-image: linear-gradient(to right,
+                transparent 0%,
+                black 8%,
+                black 92%,
+                transparent 100%);
+    }
+
+    &__track {
+        display: flex;
+        gap: 26px;
+        width: max-content;
+        will-change: transform;
+        padding: 0 20px; // small breathing room so first/last card don't clip right at the fade start
+    }
+
+    &__card {
+        flex: 0 0 auto;
+        width: 360px;
+        background: $light-bg;
+        border-radius: 20px;
+        padding: 34px 30px;
+        box-sizing: border-box;
+    }
+
+    &__quote-icon {
+        font-size: 22px;
+        color: $lavender-gray;
+        margin-bottom: 18px;
+    }
+
+    &__text {
+        font-family: $font-body;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 1.75;
+        color: #45455a;
+        margin: 0 0 22px;
+    }
+
+    &__name {
+        display: block;
+        font-family: $font-heading;
+        font-weight: 700;
+        font-size: 15px;
+        color: $primary-color;
+        position: relative;
+        padding-top: 14px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 36px;
+            height: 2px;
+            background: $secondary-color;
+        }
+    }
+
+    // ---------- RESPONSIVE ----------
+    @media (max-width: 1024px) {
+        padding: 50px 0;
+
+        &__container {
+            padding: 0 32px;
+        }
+    }
+
+    @media (max-width: 640px) {
+        padding: 40px 0;
+
+        &__container {
+            padding: 0 24px;
+        }
+
+        &__header {
+            margin-bottom: 45px;
+        }
+
+        &__card {
+            width: 290px;
+            padding: 28px 24px;
+        }
+
+        &__track {
+            gap: 20px;
+        }
+
+        // Slightly tighter fade on mobile so more card content shows
+        &__marquee {
+            mask-image: linear-gradient(to right,
+                    transparent 0%,
+                    black 5%,
+                    black 95%,
+                    transparent 100%);
+            -webkit-mask-image: linear-gradient(to right,
+                    transparent 0%,
+                    black 5%,
+                    black 95%,
+                    transparent 100%);
+        }
+    }
+
+    @media (max-width: 400px) {
+        &__container {
+            padding: 0 18px;
+        }
+    }
+}

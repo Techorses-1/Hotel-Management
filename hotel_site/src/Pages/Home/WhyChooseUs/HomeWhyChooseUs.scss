@@ -1,0 +1,187 @@
+// HomeWhyChooseUs.scss - UPDATED WITH CORRECT PADDING
+$primary-color: #3d52a0;
+$secondary-color: #7091e6;
+$slate-color: #8697c4;
+$lavender-gray: #adbbda;
+$light-bg: #ede8f5;
+$card-bg: #ffffff;
+
+$font-heading: "Montserrat", sans-serif;
+$font-body: "Nunito", sans-serif;
+
+.home-why-choose-us {
+    width: 100%;
+    background: $light-bg;
+    padding: 60px 0; // Desktop: 60px top & bottom
+
+    &__container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 40px;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 380px 1fr;
+        gap: 80px;
+        align-items: start;
+    }
+
+    // ---------- LEFT (STICKY HEADING) ----------
+    &__left {
+        position: sticky;
+        top: 120px;
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        font-family: $font-body;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $secondary-color;
+        margin-bottom: 14px;
+    }
+
+    &__title {
+        font-family: $font-heading;
+        font-weight: 800;
+        font-size: clamp(28px, 3.2vw, 40px);
+        line-height: 1.2;
+        color: #24243e;
+        margin: 0 0 18px;
+    }
+
+    &__subtext {
+        font-family: $font-body;
+        font-weight: 500;
+        font-size: 15.5px;
+        line-height: 1.7;
+        color: #55556a;
+        margin: 0;
+        max-width: 340px;
+    }
+
+    // ---------- RIGHT (NUMBERED LIST) ----------
+    &__right {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__item {
+        position: relative;
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        gap: 28px;
+        padding: 38px 0;
+    }
+
+    &__divider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: rgba(61, 82, 160, 0.15);
+    }
+
+    &__number {
+        font-family: $font-heading;
+        font-weight: 800;
+        font-size: 42px;
+        color: $lavender-gray;
+        line-height: 1;
+    }
+
+    &__item-text {
+        min-width: 0;
+    }
+
+    &__item-title {
+        font-family: $font-heading;
+        font-weight: 700;
+        font-size: 21px;
+        color: #24243e;
+        margin: 0 0 10px;
+    }
+
+    &__item-desc {
+        font-family: $font-body;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 1.75;
+        color: #55556a;
+        margin: 0;
+        max-width: 520px;
+    }
+
+    // ---------- RESPONSIVE ----------
+    @media (max-width: 1024px) {
+        padding: 50px 0; // Tablet: 50px top & bottom
+
+        &__container {
+            padding: 0 32px;
+            grid-template-columns: 300px 1fr;
+            gap: 50px;
+        }
+
+        &__number {
+            font-size: 36px;
+        }
+    }
+
+    @media (max-width: 860px) {
+        &__container {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        &__left {
+            position: static;
+            text-align: center;
+        }
+
+        &__subtext {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        &__item {
+            grid-template-columns: 70px 1fr;
+            gap: 20px;
+            padding: 30px 0;
+        }
+    }
+
+    @media (max-width: 640px) {
+        padding: 40px 0; // Mobile: 40px top & bottom
+
+        &__container {
+            padding: 0 24px;
+        }
+
+        &__item {
+            grid-template-columns: 1fr;
+            gap: 10px;
+            padding: 26px 0;
+        }
+
+        &__number {
+            font-size: 30px;
+        }
+
+        &__item-title {
+            font-size: 18.5px;
+        }
+
+        &__item-desc {
+            font-size: 14px;
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 400px) {
+        &__container {
+            padding: 0 18px;
+        }
+    }
+}

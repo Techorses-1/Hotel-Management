@@ -1,0 +1,269 @@
+// AboutNearbyAttractions.scss - UPDATED with fixed equal heights
+$primary-color: #3d52a0;
+$secondary-color: #7091e6;
+$slate-color: #8697c4;
+$lavender-gray: #adbbda;
+$light-bg: #ede8f5;
+$card-bg: #ffffff;
+
+$font-heading: "Montserrat", sans-serif;
+$font-body: "Nunito", sans-serif;
+
+.about-nearby {
+    width: 100%;
+    background: #ffffff;
+    padding: 60px 0;
+    overflow-x: hidden;
+
+    &__container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 40px;
+        box-sizing: border-box;
+    }
+
+    &__header {
+        max-width: 600px;
+        margin: 0 auto 55px;
+        text-align: center;
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        font-family: $font-body;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $secondary-color;
+        margin-bottom: 14px;
+    }
+
+    &__title {
+        font-family: $font-heading;
+        font-weight: 800;
+        font-size: clamp(28px, 3.4vw, 40px);
+        color: #24243e;
+        margin: 0 0 12px;
+    }
+
+    &__subtext {
+        font-family: $font-body;
+        font-weight: 500;
+        font-size: 15px;
+        color: $slate-color;
+        margin: 0;
+    }
+
+    // ---------- SLIDER ----------
+    &__slider-wrap {
+        position: relative;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 40px;
+        box-sizing: border-box;
+    }
+
+    &__swiper {
+        width: 100%;
+        padding-bottom: 4px;
+    }
+
+    &__card {
+        background: $card-bg;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(61, 82, 160, 0.07);
+        box-sizing: border-box;
+        height: 100%; // All cards fill the swiper slide height
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__image-wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    &__distance {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.95);
+        color: $primary-color;
+        font-family: $font-body;
+        font-weight: 700;
+        font-size: 12px;
+        padding: 6px 12px;
+        border-radius: 20px;
+
+        svg {
+            font-size: 11px;
+        }
+    }
+
+    &__content {
+        padding: 20px 20px 24px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__name {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-family: $font-heading;
+        font-weight: 700;
+        font-size: 17px;
+        color: #24243e;
+        margin: 0 0 10px;
+        line-height: 1.3;
+        min-height: 44px; // FIXED HEIGHT - enough for 2 lines of text
+
+        svg {
+            color: $secondary-color;
+            font-size: 14px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+    }
+
+    &__desc {
+        font-family: $font-body;
+        font-weight: 500;
+        font-size: 13.5px;
+        line-height: 1.6;
+        color: $slate-color;
+        margin: 0;
+        flex: 1;
+        // Limit description to 3 lines max to keep cards equal
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    // ---------- ARROW NAVIGATION ----------
+    &__arrow {
+        position: absolute;
+        top: 38%;
+        transform: translateY(-50%);
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: #ffffff;
+        color: $primary-color;
+        border: none;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 12px 30px rgba(61, 82, 160, 0.2);
+        z-index: 10;
+        transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+
+        &:hover {
+            background: $primary-color;
+            color: #ffffff;
+            transform: translateY(-50%) scale(1.06);
+        }
+
+        &.swiper-button-disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        &--prev {
+            left: 10px;
+        }
+
+        &--next {
+            right: 10px;
+        }
+    }
+
+    // ---------- RESPONSIVE ----------
+    @media (max-width: 1024px) {
+        padding: 50px 0;
+
+        &__container,
+        &__slider-wrap {
+            padding: 0 32px;
+        }
+
+        &__arrow {
+            width: 46px;
+            height: 46px;
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 640px) {
+        padding: 40px 0;
+
+        &__container,
+        &__slider-wrap {
+            padding: 0 24px;
+        }
+
+        &__header {
+            margin-bottom: 40px;
+        }
+
+        &__title {
+            font-size: 26px;
+        }
+
+        &__content {
+            padding: 16px 16px 20px;
+        }
+
+        &__name {
+            font-size: 15.5px;
+            min-height: 40px; // Smaller min-height for mobile
+        }
+
+        &__desc {
+            font-size: 13px;
+            -webkit-line-clamp: 3;
+        }
+
+        &__arrow {
+            width: 40px;
+            height: 40px;
+            font-size: 12px;
+
+            &--prev {
+                left: 4px;
+            }
+
+            &--next {
+                right: 4px;
+            }
+        }
+    }
+
+    @media (max-width: 400px) {
+        &__container,
+        &__slider-wrap {
+            padding: 0 18px;
+        }
+    }
+}
