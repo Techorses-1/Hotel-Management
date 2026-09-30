@@ -35,7 +35,7 @@ const ContactDetails = () => {
         setIsSubmitting(true);
 
         try {
-            const response = await fetch('https://hotel-management-xkim.onrender.com/contact/create-contact', {
+            const response = await fetch('https://hotelmanagement.techorses.com/api/contact/create-contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
