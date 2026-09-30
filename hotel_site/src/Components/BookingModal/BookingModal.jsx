@@ -62,7 +62,7 @@ const BookingModal = ({ isOpen, onClose }) => {
         onSubmit: async (values, { setSubmitting, resetForm }) => {
             try {
                 // ✅ API Call to your backend
-                const response = await fetch('https://hotel-management-xkim.onrender.com/website-booking/create-website-booking', {
+                const response = await fetch('https://hotelmanagement.techorses.com/api/website-booking/create-website-booking', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
