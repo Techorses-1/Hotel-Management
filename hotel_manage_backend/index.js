@@ -18,6 +18,7 @@ app.use(
             "http://localhost:5173",
             "https://hotel-management-lovat.vercel.app",
             "https://hotel-site-alpha-sepia.vercel.app",
+            "https://hotelmanagement.techorses.com",
         ],
         credentials: true,
     })
@@ -82,7 +83,7 @@ app.use('/contact', contactRoutes);
 
 // Test route
 app.get("/", (req, res) => {
-    res.send("Hotel Management Software is Running OK! 🏨");
+    res.send("New Hotel Management Software is Running OK! 🏨");
 });
 
 const PORT = process.env.PORT || 4060;
